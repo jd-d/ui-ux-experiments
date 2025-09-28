@@ -16,7 +16,8 @@
           "slug": "typhoon-disruption",
           "label": "Typhoon Disruption"
         }
-      ]
+      ],
+      "summary": "Super Typhoon Ragasa halted container throughput and knocked out regional grids, straining Asian trade arteries just as inventories rebuilt."
     },
     {
       "slug": "thailand_negative_outlook",
@@ -33,7 +34,8 @@
           "slug": "sovereign-outlook-change",
           "label": "Sovereign Outlook Change"
         }
-      ]
+      ],
+      "summary": "Fitch shifted Thailand’s sovereign outlook to negative, citing fiscal slippage and governance risks that bring a downgrade closer."
     },
     {
       "slug": "typhoon_ragasa_disruption",
@@ -50,7 +52,8 @@
           "slug": "typhoon-disruption",
           "label": "Typhoon Disruption"
         }
-      ]
+      ],
+      "summary": "After landfall, Typhoon Ragasa forced extended port closures and power rationing across coastal hubs, rippling through shipping lanes."
     },
     {
       "slug": "2025-09-25-brief",
@@ -58,7 +61,8 @@
       "as_of": "2025-09-25",
       "cluster": null,
       "event_uid": null,
-      "tags": []
+      "tags": [],
+      "summary": "Daily roundup of trigger scores, macro catalysts, and positioning shifts recorded on 25 September 2025."
     },
     {
       "slug": "post-image-test",
@@ -75,7 +79,8 @@
           "slug": "infrastructure",
           "label": "Infrastructure"
         }
-      ]
+      ],
+      "summary": "Mega-farm irrigation and processing loads in the western plains are pulling data-center level power, pressuring rural grids."
     },
     {
       "slug": "thailand_sovereign_watch",
@@ -92,7 +97,8 @@
           "slug": "sovereign-rating-watch",
           "label": "Sovereign Rating Watch"
         }
-      ]
+      ],
+      "summary": "Ratings agencies moved Thailand onto watch status as fiscal deficits widen and debt metrics deteriorate."
     },
     {
       "slug": "gulf_port_outage",
@@ -109,7 +115,8 @@
           "slug": "port-operational-failure",
           "label": "Port Operational Failure"
         }
-      ]
+      ],
+      "summary": "A 36-hour outage at a Gulf container terminal stalled throughput and aggravated global shipping congestion."
     },
     {
       "slug": "2025-09-24-daily-brief",
@@ -117,7 +124,8 @@
       "as_of": "2025-09-24",
       "cluster": null,
       "event_uid": null,
-      "tags": []
+      "tags": [],
+      "summary": "Daily trigger monitor with cross-market stress signals captured on 24 September 2025."
     },
     {
       "slug": "china_power_grid_stress",
@@ -134,7 +142,8 @@
           "slug": "grid-stress",
           "label": "Grid Stress"
         }
-      ]
+      ],
+      "summary": "Surging summer demand and coal shortages pushed China’s grid toward rolling blackouts, underscoring structural power risk."
     },
     {
       "slug": "regional-banks-cre-maturity",
@@ -151,7 +160,8 @@
           "slug": "banking-strain",
           "label": "Banking Strain"
         }
-      ]
+      ],
+      "summary": "Regional lenders face a wall of commercial real estate maturities with delinquencies climbing and refinancing scarce."
     },
     {
       "slug": "panama-canal-drought",
@@ -168,7 +178,8 @@
           "slug": "climate-disruption",
           "label": "Climate Disruption"
         }
-      ]
+      ],
+      "summary": "Historic drought forced the Panama Canal to cap transits, bottlenecking container and LNG flows worldwide."
     },
     {
       "slug": "office-crash-defaults",
@@ -185,7 +196,8 @@
           "slug": "cre-credit-crunch",
           "label": "Cre Credit Crunch"
         }
-      ]
+      ],
+      "summary": "Office valuations collapsed, driving record CRE loan defaults and stressing bank balance sheets."
     },
     {
       "slug": "avian-flu-mammal-spillover",
@@ -202,7 +214,8 @@
           "slug": "zoonosis",
           "label": "Zoonosis"
         }
-      ]
+      ],
+      "summary": "H5N1 jumped into mammals with sporadic human cases, reviving pandemic risk concerns."
     },
     {
       "slug": "freight-slump-panama",
@@ -219,7 +232,8 @@
           "slug": "trade-slowdown",
           "label": "Trade Slowdown"
         }
-      ]
+      ],
+      "summary": "Global freight indices slumped as demand softened, signaling weaker trade and shipping revenues."
     },
     {
       "slug": "france-italy-yields",
@@ -236,7 +250,8 @@
           "slug": "sovereign-fiscal-stress",
           "label": "Sovereign Fiscal Stress"
         }
-      ]
+      ],
+      "summary": "France’s downgrade and OAT/BTP spread convergence highlighted rising fiscal strain across core Europe."
     },
     {
       "slug": "2025-09-23-brief",
@@ -244,7 +259,8 @@
       "as_of": "2025-09-23",
       "cluster": null,
       "event_uid": null,
-      "tags": []
+      "tags": [],
+      "summary": "Daily risk brief covering leaderboard moves and macro triggers for 23 September 2025."
     },
     {
       "slug": "local-debt-timebomb",
@@ -261,7 +277,8 @@
           "slug": "local-debt-crisis",
           "label": "Local Debt Crisis"
         }
-      ]
+      ],
+      "summary": "China’s opaque local government financing vehicles threaten financial stability despite restructuring pledges."
     },
     {
       "slug": "property-slump-defaults",
@@ -278,7 +295,8 @@
           "slug": "property-bust",
           "label": "Property Bust"
         }
-      ]
+      ],
+      "summary": "Developer defaults deepened China’s property slump, amplifying credit stress across the system."
     },
     {
       "slug": "data-centers-grid",
@@ -295,7 +313,8 @@
           "slug": "infrastructure-risk",
           "label": "Infrastructure Risk"
         }
-      ]
+      ],
+      "summary": "The AI data center boom is testing grid headroom, forcing utilities to ration new capacity."
     },
     {
       "slug": "zero-day-volatility",
@@ -312,7 +331,8 @@
           "slug": "market-tail-risk",
           "label": "Market Tail Risk"
         }
-      ]
+      ],
+      "summary": "0DTE options volumes are amplifying intraday crash risk and feedback loops in equity volatility."
     },
     {
       "slug": "2025-09-22-brief",
@@ -320,7 +340,8 @@
       "as_of": "2025-09-22",
       "cluster": null,
       "event_uid": null,
-      "tags": []
+      "tags": [],
+      "summary": "Daily risk brief highlighting cycle triggers logged on 22 September 2025."
     }
   ]
 }

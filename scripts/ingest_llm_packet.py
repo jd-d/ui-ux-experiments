@@ -11,7 +11,10 @@ from datetime import date
 from html import escape, unescape
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
-from urllib.parse import urlsplit, urlunsplit
+from urllib.parse import urljoin, urlsplit, urlunsplit
+
+SITE_BASE_URL = "https://triggerrisk.blog/"
+DEFAULT_SOCIAL_IMAGE = "assets/social-card.png"
 
 REQUIRED_PACKET_KEYS = {"as_of", "clusters", "events_update", "post"}
 WATCH_PHASES = {"watch", "elevated", "critical"}
@@ -20,6 +23,18 @@ CONFIDENCE_ORDER = {"high": 3, "medium": 2, "low": 1}
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
+
+
+def site_url(path: str = "") -> str:
+    base = SITE_BASE_URL.rstrip("/") + "/"
+    if not path:
+        return base
+    return urljoin(base, path.lstrip("/"))
+
+
+def social_image_url(path: Optional[str] = None) -> str:
+    candidate = path or DEFAULT_SOCIAL_IMAGE
+    return site_url(candidate)
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -49,6 +64,17 @@ def sanitize_html_content(html_content: str) -> str:
     cleaned = re.sub(r":contentReference\[[^\]]*\]\{[^}]*\}", "", html_content)
     cleaned = re.sub(r":contentReference\[[^\]]*\]", "", cleaned)
     return cleaned
+
+
+def escape_xml(text: str) -> str:
+    return (
+        str(text or "")
+        .replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+        .replace("'", "&apos;")
+    )
 
 
 def extract_text_summary(html_content: str, fallback: str = "", max_length: int = 160) -> str:
@@ -97,6 +123,43 @@ def glossary_slug_from_value(value: str) -> str:
     slug_source = slug_source.replace("_", " ")
     slug = re.sub(r"[^a-z0-9]+", "-", slug_source)
     return slug.strip("-")
+
+
+def normalize_tags_list(raw_tags: Any) -> List[Dict[str, str]]:
+    tags: List[Dict[str, str]] = []
+    if not raw_tags:
+        return tags
+
+    for item in raw_tags:
+        slug_value = ""
+        label_value = ""
+        if isinstance(item, dict):
+            slug_value = str(item.get("slug") or item.get("id") or "").strip()
+            label_value = str(item.get("label") or item.get("name") or slug_value).strip()
+        else:
+            label_value = str(item or "").strip()
+            slug_value = label_value
+
+        if not slug_value and not label_value:
+            continue
+
+        slug_token = slugify(slug_value) if slug_value else slugify(label_value)
+        label_text = label_value or normalize_label(slug_token)
+        if not slug_token:
+            slug_token = slugify(label_text)
+        if not slug_token:
+            continue
+        tags.append({"slug": slug_token, "label": label_text})
+
+    seen: Set[Tuple[str, str]] = set()
+    unique: List[Dict[str, str]] = []
+    for tag in tags:
+        key = (tag.get("slug") or "", tag.get("label") or "")
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(tag)
+    return unique
 
 
 def render_glossary_link(
@@ -218,6 +281,7 @@ def render_score_chip(score: Optional[Any]) -> Optional[str]:
 
 
 def render_post_page(
+    slug: str,
     title: str,
     content: str,
     *,
@@ -229,6 +293,8 @@ def render_post_page(
     event_type: Optional[str] = None,
     confidence: Optional[str] = None,
     score: Optional[Any] = None,
+    canonical: Optional[str] = None,
+    social_image: Optional[str] = None,
 ) -> str:
     """Wrap briefing content in the site layout template."""
 
@@ -273,6 +339,99 @@ def render_post_page(
 
     sanitized_content = sanitize_html_content(content)
 
+    canonical_url = canonical or site_url(f"posts/{slug}.html")
+    og_image = social_image_url(social_image)
+    favicon_url = site_url("assets/favicon.png")
+
+    published_iso = None
+    if as_of:
+        try:
+            published_iso = parse_date(as_of).isoformat()
+        except ValueError:
+            published_iso = as_of
+
+    keywords: List[str] = []
+    for token in (cluster, event_type, confidence, phase):
+        value = (token or "").strip()
+        if value:
+            keywords.append(value)
+
+    publisher = {
+        "@type": "Organization",
+        "name": "Trigger Risk Monitor",
+        "url": site_url(),
+        "logo": {
+            "@type": "ImageObject",
+            "url": favicon_url,
+        },
+    }
+
+    article_structured_data = {
+        "@type": "Article",
+        "@id": canonical_url,
+        "mainEntityOfPage": canonical_url,
+        "headline": safe_title,
+        "description": meta_description,
+        "image": og_image,
+        "inLanguage": "en",
+        "publisher": publisher,
+        "author": {
+            "@type": "Organization",
+            "name": "Trigger Risk Monitor",
+            "url": site_url(),
+        },
+    }
+    if published_iso:
+        article_structured_data["datePublished"] = published_iso
+        article_structured_data["dateModified"] = published_iso
+    if keywords:
+        article_structured_data["keywords"] = sorted(dict.fromkeys(keywords))
+    if cluster:
+        article_structured_data["articleSection"] = str(cluster)
+
+    breadcrumb_structured = {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": site_url(),
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Briefings",
+                "item": site_url("posts/index.html"),
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": safe_title,
+                "item": canonical_url,
+            },
+        ],
+    }
+
+    web_page_structured = {
+        "@type": "WebPage",
+        "@id": canonical_url + "#webpage",
+        "url": canonical_url,
+        "name": safe_title,
+        "description": meta_description,
+        "isPartOf": {"@id": site_url()},
+    }
+
+    structured_data = {
+        "@context": "https://schema.org",
+        "@graph": [web_page_structured, article_structured_data, breadcrumb_structured],
+    }
+    structured_json = json.dumps(structured_data, ensure_ascii=False)
+    structured_json = structured_json.replace("</", "<\\/")
+
+    og_type = "article"
+    twitter_card = "summary_large_image"
+
     html_page = f"""<!DOCTYPE html>
 <html lang=\"en\">
   <head>
@@ -283,6 +442,20 @@ def render_post_page(
       name=\"description\"
       content=\"{escape(meta_description)}\"
     />
+    <link rel=\"canonical\" href=\"{escape(canonical_url)}\" />
+    <meta property=\"og:site_name\" content=\"Trigger Risk Monitor\" />
+    <meta property=\"og:title\" content=\"{escape(safe_title)}\" />
+    <meta property=\"og:description\" content=\"{escape(meta_description)}\" />
+    <meta property=\"og:type\" content=\"{og_type}\" />
+    <meta property=\"og:url\" content=\"{escape(canonical_url)}\" />
+    <meta property=\"og:image\" content=\"{escape(og_image)}\" />
+    <meta property=\"og:locale\" content=\"en_US\" />
+    {f'<meta property="article:section" content="{escape(str(cluster))}" />' if cluster else ''}
+    {f'<meta property="article:published_time" content="{escape(published_iso)}" />' if published_iso else ''}
+    <meta name=\"twitter:card\" content=\"{twitter_card}\" />
+    <meta name=\"twitter:title\" content=\"{escape(safe_title)}\" />
+    <meta name=\"twitter:description\" content=\"{escape(meta_description)}\" />
+    <meta name=\"twitter:image\" content=\"{escape(og_image)}\" />
     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\" crossorigin />
     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin />
     <link
@@ -292,6 +465,7 @@ def render_post_page(
     <link rel=\"stylesheet\" href=\"../assets/css/style.css\" />
     <link rel=\"icon\" href=\"../assets/favicon.png\" type=\"image/png\" />
     <link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"../assets/favicon.png\" />
+    <script type=\"application/ld+json\">{structured_json}</script>
   </head>
   <body>
     <header class=\"site-header\" id=\"top\">
@@ -487,6 +661,7 @@ def write_brief(
             content = f"{content}\n{history_section}"
 
     page = render_post_page(
+        slug,
         title,
         content,
         as_of=as_of,
@@ -572,6 +747,15 @@ def collect_and_write_briefings(
             update = update_by_slug.get(slug_hint)
             if update:
                 event = aggregated_by_uid.get(str(update.get("uid") or "").strip())
+        title_text = str(b.get("title") or "").strip()
+        content_html = b.get("content") or ""
+        summary_source = b.get("summary") or b.get("abstract") or content_html
+        summary_text = extract_text_summary(
+            str(summary_source),
+            fallback=title_text or slug_hint,
+            max_length=220,
+        )
+        tags = normalize_tags_list(b.get("tags") or (event or {}).get("tags"))
         result = write_brief(b, slug_hint, as_of, event)
         if result:
             slug, _ = result
@@ -580,9 +764,11 @@ def collect_and_write_briefings(
                 {
                     "event_uid": b.get("event_uid"),
                     "slug": slug,
-                    "title": b.get("title"),
+                    "title": title_text or b.get("title"),
                     "cluster": (event or {}).get("cluster") or b.get("cluster"),
                     "as_of": packet.get("as_of"),
+                    "summary": summary_text,
+                    "tags": tags,
                 }
             )
 
@@ -597,6 +783,15 @@ def collect_and_write_briefings(
         event = aggregated_by_uid.get(uid_key) if uid_key else None
         if not event and slug_hint:
             event = aggregated_by_slug.get(slug_hint)
+        title_text = str(brief.get("title") or ev.get("title") or "").strip()
+        content_html = brief.get("content") or ""
+        summary_source = brief.get("summary") or brief.get("abstract") or content_html
+        summary_text = extract_text_summary(
+            str(summary_source),
+            fallback=title_text or slug_hint,
+            max_length=220,
+        )
+        tags = normalize_tags_list(brief.get("tags") or ev.get("tags") or (event or {}).get("tags"))
         result = write_brief(brief, slug_hint, as_of, event)
         if result:
             slug, _ = result
@@ -607,11 +802,13 @@ def collect_and_write_briefings(
                 {
                     "event_uid": uid_key or ev.get("uid"),
                     "slug": slug,
-                    "title": brief.get("title") or ev.get("title"),
+                    "title": title_text or brief.get("title") or ev.get("title"),
                     "cluster": (event or {}).get("cluster")
                     or ev.get("cluster")
                     or (ev.get("fingerprint_fields") or {}).get("cluster"),
                     "as_of": packet.get("as_of"),
+                    "summary": summary_text,
+                    "tags": tags,
                 }
             )
     if written:
@@ -639,6 +836,8 @@ def update_briefings_archive(entries: List[Dict[str, Any]], generated_as_of: Opt
             "as_of": item.get("as_of"),
             "cluster": item.get("cluster"),
             "event_uid": item.get("event_uid"),
+            "summary": item.get("summary"),
+            "tags": item.get("tags") or [],
         }
 
     for entry in entries:
@@ -652,6 +851,8 @@ def update_briefings_archive(entries: List[Dict[str, Any]], generated_as_of: Opt
             "as_of": entry.get("as_of") or current.get("as_of"),
             "cluster": entry.get("cluster") or current.get("cluster"),
             "event_uid": entry.get("event_uid") or current.get("event_uid"),
+            "summary": entry.get("summary") or current.get("summary"),
+            "tags": entry.get("tags") or current.get("tags") or [],
         }
 
     def sort_key(item: Dict[str, Any]) -> Tuple[int, str, str]:
@@ -674,6 +875,114 @@ def update_briefings_archive(entries: List[Dict[str, Any]], generated_as_of: Opt
             "items": ordered,
         },
     )
+    write_sitemaps(ordered, generated)
+
+
+def write_sitemaps(items: List[Dict[str, Any]], generated_at: Optional[str]) -> None:
+    """Publish XML and JSON sitemap representations for the site."""
+
+    root = repo_root()
+    today_iso = date.today().isoformat()
+
+    def normalize_lastmod(value: Optional[str]) -> Optional[str]:
+        if not value:
+            return None
+        try:
+            return parse_date(str(value)).isoformat()
+        except Exception:
+            return str(value)
+
+    def add_url(
+        entries: List[Dict[str, Any]],
+        path: str,
+        *,
+        lastmod: Optional[str] = None,
+        changefreq: Optional[str] = None,
+        priority: Optional[float] = None,
+    ) -> None:
+        url_entry: Dict[str, Any] = {"loc": site_url(path)}
+        normalized_lastmod = normalize_lastmod(lastmod)
+        if normalized_lastmod:
+            url_entry["lastmod"] = normalized_lastmod
+        if changefreq:
+            url_entry["changefreq"] = changefreq
+        if priority is not None:
+            try:
+                url_entry["priority"] = f"{float(priority):.1f}"
+            except (TypeError, ValueError):
+                pass
+        entries.append(url_entry)
+
+    sitemap_entries: List[Dict[str, Any]] = []
+    default_lastmod = generated_at or today_iso
+
+    add_url(sitemap_entries, "index.html", lastmod=default_lastmod, changefreq="daily", priority=1.0)
+    add_url(
+        sitemap_entries,
+        "posts/index.html",
+        lastmod=default_lastmod,
+        changefreq="daily",
+        priority=0.9,
+    )
+    add_url(
+        sitemap_entries,
+        "tags/index.html",
+        lastmod=default_lastmod,
+        changefreq="weekly",
+        priority=0.6,
+    )
+    add_url(
+        sitemap_entries,
+        "methodology.html",
+        lastmod=default_lastmod,
+        changefreq="monthly",
+        priority=0.5,
+    )
+    add_url(
+        sitemap_entries,
+        "glossary.html",
+        lastmod=default_lastmod,
+        changefreq="monthly",
+        priority=0.5,
+    )
+
+    for item in items:
+        slug = str((item or {}).get("slug") or "").strip()
+        if not slug:
+            continue
+        lastmod_value = item.get("as_of") or default_lastmod
+        add_url(
+            sitemap_entries,
+            f"posts/{slug}.html",
+            lastmod=lastmod_value,
+            changefreq="weekly",
+            priority=0.7,
+        )
+
+    xml_lines = [
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+
+    for entry in sitemap_entries:
+        xml_lines.append("  <url>")
+        for key in ("loc", "lastmod", "changefreq", "priority"):
+            value = entry.get(key)
+            if value is None:
+                continue
+            xml_lines.append(f"    <{key}>{escape_xml(value)}</{key}>")
+        xml_lines.append("  </url>")
+
+    xml_lines.append("</urlset>")
+
+    sitemap_xml = "\n".join(xml_lines) + "\n"
+    (root / "sitemap.xml").write_text(sitemap_xml, encoding="utf-8")
+
+    json_payload = {
+        "generated_at": default_lastmod,
+        "urls": sitemap_entries,
+    }
+    dump_json(root / "sitemap.json", json_payload)
 
 
 def canonicalize_url(url: str) -> str:
@@ -1322,6 +1631,7 @@ def write_post(post_payload: Dict[str, Any], as_of: Optional[str]) -> Optional[P
     title = str(post_payload.get("title") or slug.replace("-", " ").title())
     summary = extract_text_summary(str(content), fallback=title)
     page = render_post_page(
+        slug,
         title,
         str(content),
         as_of=as_of,

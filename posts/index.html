@@ -8,6 +8,24 @@
       name="description"
       content="Complete archive of Trigger Risk Monitor briefings and daily monitors."
     />
+    <link rel="canonical" href="https://triggerrisk.blog/posts/index.html" />
+    <meta property="og:site_name" content="Trigger Risk Monitor" />
+    <meta property="og:title" content="All Briefings — Trigger Risk Monitor" />
+    <meta
+      property="og:description"
+      content="Complete archive of Trigger Risk Monitor briefings and daily monitors."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://triggerrisk.blog/posts/index.html" />
+    <meta property="og:image" content="https://triggerrisk.blog/assets/social-card.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="All Briefings — Trigger Risk Monitor" />
+    <meta
+      name="twitter:description"
+      content="Complete archive of Trigger Risk Monitor briefings and daily monitors."
+    />
+    <meta name="twitter:image" content="https://triggerrisk.blog/assets/social-card.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,6 +35,38 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="icon" href="../assets/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://triggerrisk.blog/posts/index.html#webpage",
+            "url": "https://triggerrisk.blog/posts/index.html",
+            "name": "All Briefings — Trigger Risk Monitor",
+            "description": "Complete archive of Trigger Risk Monitor briefings and daily monitors.",
+            "isPartOf": { "@id": "https://triggerrisk.blog/#website" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://triggerrisk.blog/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Briefings",
+                "item": "https://triggerrisk.blog/posts/index.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <header class="site-header" id="top">
@@ -54,11 +104,43 @@
 
           <div class="post-content">
             <p>
-              The archive updates automatically as new packets are ingested. Scroll to load additional
-              entries or tap a card to read the full write-up.
+              Use the filters to narrow by trigger cluster, timeframe, or keywords. The archive updates
+              automatically as new packets are ingested.
             </p>
             <p class="archive-summary" data-archive-summary></p>
           </div>
+
+          <form class="archive-controls" data-archive-controls role="search">
+            <div class="archive-control">
+              <label class="archive-control__label" for="archive-search">Keyword search</label>
+              <input
+                type="search"
+                id="archive-search"
+                name="q"
+                placeholder="Search titles, summaries, or tags"
+                autocomplete="off"
+                data-filter-search
+              />
+            </div>
+            <div class="archive-control">
+              <label class="archive-control__label" for="archive-cluster">Cluster</label>
+              <select id="archive-cluster" data-filter-cluster>
+                <option value="">All clusters</option>
+              </select>
+            </div>
+            <div class="archive-control">
+              <label class="archive-control__label" for="archive-timeframe">Timeframe</label>
+              <select id="archive-timeframe" data-filter-timeframe>
+                <option value="all">All time</option>
+                <option value="7">Last 7 days</option>
+                <option value="30">Last 30 days</option>
+                <option value="365">Last 365 days</option>
+              </select>
+            </div>
+            <div class="archive-control archive-control--actions">
+              <button type="reset" class="btn btn-outline" data-filter-reset>Clear filters</button>
+            </div>
+          </form>
 
           <section class="archive-listing" aria-live="polite">
             <div class="cards-grid" data-archive-list></div>
