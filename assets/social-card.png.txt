@@ -1,0 +1,5 @@
+Placeholder for social sharing card.
+
+Please replace this text file with the finalized PNG asset named `social-card.png` before deployment to production. The current design source is available in the shared design system (Figma: Marketing > Social Preview Cards > Default). Export a 1200x630 PNG and drop it into `assets/social-card.png`.
+
+Do not commit this text file once the real asset is in place.

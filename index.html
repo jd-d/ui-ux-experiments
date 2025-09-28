@@ -8,6 +8,30 @@
       name="description"
       content="Signal-driven blog that tracks macro, credit, and sentiment triggers that could puncture the late stage of the 18.6-year land cycle."
     />
+    <link rel="canonical" href="https://triggerrisk.blog/index.html" />
+    <meta property="og:site_name" content="Trigger Risk Monitor" />
+    <meta
+      property="og:title"
+      content="Trigger Risk Monitor — Tracking the 18.6-Year Cycle"
+    />
+    <meta
+      property="og:description"
+      content="Signal-driven blog that tracks macro, credit, and sentiment triggers that could puncture the late stage of the 18.6-year land cycle."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://triggerrisk.blog/" />
+    <meta property="og:image" content="https://triggerrisk.blog/assets/social-card.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Trigger Risk Monitor — Tracking the 18.6-Year Cycle"
+    />
+    <meta
+      name="twitter:description"
+      content="Signal-driven blog that tracks macro, credit, and sentiment triggers that could puncture the late stage of the 18.6-year land cycle."
+    />
+    <meta name="twitter:image" content="https://triggerrisk.blog/assets/social-card.png" />
     <link
       rel="preconnect"
       href="https://fonts.googleapis.com"
@@ -21,6 +45,48 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://triggerrisk.blog/#website",
+            "url": "https://triggerrisk.blog/",
+            "name": "Trigger Risk Monitor",
+            "description": "Signal-driven blog that tracks macro, credit, and sentiment triggers that could puncture the late stage of the 18.6-year land cycle.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Trigger Risk Monitor",
+              "url": "https://triggerrisk.blog/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://triggerrisk.blog/assets/favicon.png"
+              }
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://triggerrisk.blog/index.html#webpage",
+            "url": "https://triggerrisk.blog/index.html",
+            "name": "Trigger Risk Monitor — Tracking the 18.6-Year Cycle",
+            "description": "Signal-driven blog that tracks macro, credit, and sentiment triggers that could puncture the late stage of the 18.6-year land cycle.",
+            "isPartOf": { "@id": "https://triggerrisk.blog/#website" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://triggerrisk.blog/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <header class="site-header" id="top">
@@ -55,55 +121,49 @@
             <p>
               Liquidity, credit, fiscal, and sentiment data are parsed each week
               to flag the catalysts most likely to trigger the next slide in the
-              property and risk asset complex.
+              property and risk asset complex. The live snapshot below rotates
+              through today&rsquo;s highest-conviction trigger risks.
             </p>
+            <div class="hero-stats" data-hero-stats>
+              <div class="hero-stat">
+                <span class="hero-stat__label">Active watchlist</span>
+                <span class="hero-stat__value" data-hero-stat="count">--</span>
+              </div>
+              <div class="hero-stat">
+                <span class="hero-stat__label">Top score</span>
+                <span class="hero-stat__value" data-hero-stat="top-score">--</span>
+              </div>
+              <div class="hero-stat">
+                <span class="hero-stat__label">Updated</span>
+                <span class="hero-stat__value" data-hero-stat="as-of">--</span>
+              </div>
+            </div>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#latest">Read this week's signals</a>
               <a class="btn btn-secondary" href="#playbook">See the playbook</a>
             </div>
           </div>
-          <div class="hero-card" role="presentation">
-            <h2>Cycle Position</h2>
-            <p class="hero-card__subtitle">Late Expansion &bull; Fragility heightened</p>
-            <ul class="hero-card__indicators">
-              <li>
-                <span
-                  ><a href="posts/thailand_sovereign_watch.html"
-                    >Sovereign stress spreads to Thailand</a
-                  ></span
-                >
-                <strong class="indicator indicator--weakening">Weakening</strong>
-              </li>
-              <li>
-                <span
-                  ><a href="posts/office-crash-defaults.html"
-                    >CRE credit quality</a
-                  ></span
-                >
-                <strong class="indicator indicator--deteriorating">Deteriorating</strong>
-              </li>
-              <li>
-                <span
-                  ><a href="posts/china_power_grid_stress.html"
-                    >China grid blackouts</a
-                  ></span
-                >
-                <strong class="indicator indicator--deteriorating">Deteriorating</strong>
-              </li>
-            </ul>
-            <p class="hero-card__note">
-              Baseline view updated 24 September 2025. Recent briefs cover
-              <a href="posts/thailand_sovereign_watch.html"
-                >Thailand&rsquo;s rating watch</a
-              >,
-              <a href="posts/china_power_grid_stress.html"
-                >rolling blackouts in China</a
-              >,
-              and
-              <a href="posts/gulf_port_outage.html"
-                >a Gulf port outage straining trade</a
-              >.
-            </p>
+          <div class="hero-highlight" data-hero-highlight>
+            <article class="hero-highlight__card" data-hero-card>
+              <div class="hero-highlight__status">
+                <span class="hero-highlight__badge" data-hero-phase>Loading…</span>
+                <span class="hero-highlight__score" data-hero-score>--</span>
+              </div>
+              <h2 class="hero-highlight__title" data-hero-title>Loading cycle snapshot…</h2>
+              <p class="hero-highlight__summary" data-hero-summary>
+                High-impact trigger risks will surface here as soon as the leaderboard loads.
+              </p>
+              <div class="hero-highlight__meta">
+                <span class="hero-highlight__cluster" data-hero-cluster></span>
+                <span class="hero-highlight__updated" data-hero-updated></span>
+              </div>
+              <div class="hero-highlight__meter" aria-hidden="true">
+                <div class="hero-highlight__meter-fill" data-hero-meter></div>
+              </div>
+              <div class="hero-highlight__sources" data-hero-sources></div>
+              <a class="hero-highlight__cta" data-hero-link href="#leaderboard">Explore signal →</a>
+              <div class="hero-highlight__controls" data-hero-dots aria-label="Hero highlights navigation"></div>
+            </article>
           </div>
         </div>
       </section>
@@ -584,6 +644,7 @@
       });
     </script>
     <script src="assets/js/main.js" defer></script>
-	<script src="assets/js/latest.js"></script>
+    <script src="assets/js/hero-highlight.js" defer></script>
+    <script src="assets/js/latest.js" defer></script>
   </body>
 </html>
