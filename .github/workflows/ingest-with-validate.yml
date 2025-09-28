@@ -1,0 +1,206 @@
+name: Validate → Ingest → Deploy
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "data/llm/*.packet.json"
+      - "scripts/**"
+      - ".github/workflows/ingest-with-validate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages-deploy"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          # If your ingestor has deps, add:
+          # pip install -r requirements.txt
+
+      - name: Ensure scripts exist
+        run: |
+          test -f scripts/validate_and_fix_llm_packet.py || (echo "Missing scripts/validate_and_fix_llm_packet.py" && exit 1)
+          test -f scripts/check_and_fix_packet.py || (echo "Missing scripts/check_and_fix_packet.py" && exit 1)
+          chmod +x scripts/*.py || true
+
+      # === Lifecycle: Validate -> Stage (choose fixed/original) -> Acceptance -> Ingest -> Archive ===
+
+      - name: Validate & choose packet versions
+        id: packets
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          ROOT="data/llm"
+          ARCHIVE="$ROOT/archive"
+          STAGING="$ROOT/_staging"
+          HOLD="$ROOT/_hold"
+
+          mkdir -p "$ARCHIVE" "$STAGING" "$HOLD"
+
+          packets=($ROOT/*.packet.json)  # root only
+          if (( ${#packets[@]} == 0 )); then
+            echo "No packets in $ROOT/. Skipping ingest."
+            echo "PACKETS_PRESENT=false" >> $GITHUB_ENV
+            exit 0
+          fi
+          echo "PACKETS_PRESENT=true" >> $GITHUB_ENV
+
+          for p in "${packets[@]}"; do
+            base="$(basename "$p")"
+            fix="${p%.json}_fix.json"
+
+            echo "Checking $base …"
+            python scripts/check_and_fix_packet.py "$p" -o "$fix"
+
+            if cmp -s "$p" "$fix"; then
+              # No changes needed; stage original
+              cp -f "$p" "$STAGING/$base"
+              rm -f "$fix"
+              echo "::notice title=Packet::$base is already valid"
+            else
+              # Use fixed version for ingest
+              cp -f "$fix" "$STAGING/$base"
+              # Keep both original and fix in HOLD for post-ingest archival
+              mv -f "$p" "$HOLD/$base"
+              mv -f "$fix" "$HOLD/$(basename "$fix")"
+              echo "::notice title=Packet::$base had fixes; using fixed version for ingest"
+            fi
+          done
+
+          # Move any remaining originals to HOLD so only staged feeds ingestor
+          for p in "$ROOT"/*.packet.json; do
+            [[ -e "$p" ]] || continue
+            base="$(basename "$p")"
+            # If not already moved (fixed case), move to HOLD
+            [[ -f "$HOLD/$base" ]] || mv -f "$p" "$HOLD/$base"
+          done
+
+          # Move staged packets into ROOT so ingestor sees them
+          mv "$STAGING"/*.packet.json "$ROOT"/
+
+      - name: Acceptance checks (R2 structure)
+        if: env.PACKETS_PRESENT == 'true'
+        run: |
+          set -euo pipefail
+          python scripts/ci_acceptance_checks.py
+
+      - name: Run ingestor
+        if: env.PACKETS_PRESENT == 'true'
+        run: |
+          set -euo pipefail
+          python scripts/ingest_llm_packet.py
+
+      - name: Archive originals and any *_fix.json (only on success)
+        if: env.PACKETS_PRESENT == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          ROOT="data/llm"
+          ARCHIVE="$ROOT/archive"
+          HOLD="$ROOT/_hold"
+          TS="$(date -u +'%Y%m%dT%H%M%SZ')"
+
+          mkdir -p "$ARCHIVE"
+
+          for staged in "$ROOT"/*.packet.json; do
+            base="$(basename "$staged")"
+            name="${base%.json}"
+            fix_from_hold="$HOLD/${name}_fix.json"
+            orig_from_hold="$HOLD/$base"
+
+            # Move the ingested (staged) version to archive with timestamp
+            mv -f "$staged" "$ARCHIVE/${name}.ingested.${TS}.json" || true
+
+            # Move the original (pre-fix) if present
+            if [[ -f "$orig_from_hold" ]]; then
+              mv -f "$orig_from_hold" "$ARCHIVE/${name}.original.${TS}.json"
+            fi
+
+            # Move the fix artifact if present
+            if [[ -f "$fix_from_hold" ]]; then
+              mv -f "$fix_from_hold" "$ARCHIVE/${name}.fix.${TS}.json"
+            fi
+          done
+
+          # Clean up temp workspace dir (non-fatal if empty)
+          rmdir "$HOLD" 2>/dev/null || true
+
+      - name: Commit archive move without retriggering
+        if: env.PACKETS_PRESENT == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet; then
+            git config user.name "github-actions"
+            git config user.email "actions@users.noreply.github.com"
+            git add -A
+            # prevent loops by skipping CI on this archival commit
+            git commit -m "ci: archive ingested packets [skip ci] [skip github] [no ci]"
+            git push
+          else
+            echo "Nothing to commit."
+          fi
+
+      # === End lifecycle ===
+
+      - name: Determine site output directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -d "dist" ]]; then OUT="dist"
+          elif [[ -d "public" ]]; then OUT="public"
+          elif [[ -d "build" ]]; then OUT="build"
+          else OUT="."
+          fi
+          echo "Using output directory: $OUT"
+          echo "SITE_DIR=$OUT" >> "$GITHUB_ENV"
+
+      - name: Fallback placeholder (if empty)
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="${SITE_DIR:-.}"
+          if [[ "$OUT" == "." ]]; then
+            if [[ ! -f "index.html" && ! -f "index.htm" ]]; then
+              echo "No build output detected; creating minimal placeholder page."
+              mkdir -p dist
+              printf '%s\n' '<!doctype html><html><head><meta charset="utf-8"><title>Site Placeholder</title></head>'                 '<body><h1>Site built, but no output directory found.</h1>'                 '<p>If this is unexpected, ensure your ingestor or build step writes to <code>dist/</code> (or public/build).</p>'                 '</body></html>' > dist/index.html
+              echo "SITE_DIR=dist" >> "$GITHUB_ENV"
+            fi
+          fi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.SITE_DIR }}
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

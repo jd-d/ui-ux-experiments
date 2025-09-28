@@ -1,0 +1,326 @@
+{
+  "generated_at": "2025-09-26",
+  "items": [
+    {
+      "slug": "typhoon_ragasa_disrupts_ports_power",
+      "title": "Typhoon Ragasa Disrupts Ports and Power Grids",
+      "as_of": "2025-09-26",
+      "cluster": "SHIPPING",
+      "event_uid": "shipping__typhoon_ragasa_trade_grid_shock__2025-09-26",
+      "tags": [
+        {
+          "slug": "shipping",
+          "label": "SHIPPING"
+        },
+        {
+          "slug": "typhoon-disruption",
+          "label": "Typhoon Disruption"
+        }
+      ]
+    },
+    {
+      "slug": "thailand_negative_outlook",
+      "title": "Thailand’s Credit Outlook Cut to Negative",
+      "as_of": "2025-09-26",
+      "cluster": "EURO_SOV",
+      "event_uid": "euro_sov__thailand_negative_outlook__2025-09-26",
+      "tags": [
+        {
+          "slug": "euro-sov",
+          "label": "EURO SOV"
+        },
+        {
+          "slug": "sovereign-outlook-change",
+          "label": "Sovereign Outlook Change"
+        }
+      ]
+    },
+    {
+      "slug": "typhoon_ragasa_disruption",
+      "title": "Typhoon Ragasa Triggers Port & Power Disruptions",
+      "as_of": "2025-09-25",
+      "cluster": "SHIPPING",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "shipping",
+          "label": "SHIPPING"
+        },
+        {
+          "slug": "typhoon-disruption",
+          "label": "Typhoon Disruption"
+        }
+      ]
+    },
+    {
+      "slug": "2025-09-25-brief",
+      "title": "Daily Trigger Monitor -- 2025‑09‑25",
+      "as_of": "2025-09-25",
+      "cluster": null,
+      "event_uid": null,
+      "tags": []
+    },
+    {
+      "slug": "post-image-test",
+      "title": "Western Plains Megafarms Strain the Grid",
+      "as_of": "2025-09-24",
+      "cluster": "Agritech",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "agritech",
+          "label": "Agritech"
+        },
+        {
+          "slug": "infrastructure",
+          "label": "Infrastructure"
+        }
+      ]
+    },
+    {
+      "slug": "thailand_sovereign_watch",
+      "title": "Thailand Placed on Sovereign Watch",
+      "as_of": "2025-09-24",
+      "cluster": "EURO SOV",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "euro-sov",
+          "label": "EURO SOV"
+        },
+        {
+          "slug": "sovereign-rating-watch",
+          "label": "Sovereign Rating Watch"
+        }
+      ]
+    },
+    {
+      "slug": "gulf_port_outage",
+      "title": "Gulf Port Terminal Outage Disrupts Trade",
+      "as_of": "2025-09-24",
+      "cluster": "SHIPPING",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "shipping",
+          "label": "SHIPPING"
+        },
+        {
+          "slug": "port-operational-failure",
+          "label": "Port Operational Failure"
+        }
+      ]
+    },
+    {
+      "slug": "2025-09-24-daily-brief",
+      "title": "Daily Trigger Monitor — 2025‑09‑24",
+      "as_of": "2025-09-24",
+      "cluster": null,
+      "event_uid": null,
+      "tags": []
+    },
+    {
+      "slug": "china_power_grid_stress",
+      "title": "China Power Grid Stress Surges",
+      "as_of": "2025-09-24",
+      "cluster": "ODTE",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "odte",
+          "label": "ODTE"
+        },
+        {
+          "slug": "grid-stress",
+          "label": "Grid Stress"
+        }
+      ]
+    },
+    {
+      "slug": "regional-banks-cre-maturity",
+      "title": "Regional Banks Face CRE Maturity Wall",
+      "as_of": "2025-09-23",
+      "cluster": "US CRE",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "us-cre",
+          "label": "US CRE"
+        },
+        {
+          "slug": "banking-strain",
+          "label": "Banking Strain"
+        }
+      ]
+    },
+    {
+      "slug": "panama-canal-drought",
+      "title": "Panama Canal Drought Restricts Shipping Traffic",
+      "as_of": "2025-09-23",
+      "cluster": "SHIPPING",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "shipping",
+          "label": "SHIPPING"
+        },
+        {
+          "slug": "climate-disruption",
+          "label": "Climate Disruption"
+        }
+      ]
+    },
+    {
+      "slug": "office-crash-defaults",
+      "title": "Office Crash Triggers Record CRE Loan Defaults",
+      "as_of": "2025-09-23",
+      "cluster": "US CRE",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "us-cre",
+          "label": "US CRE"
+        },
+        {
+          "slug": "cre-credit-crunch",
+          "label": "Cre Credit Crunch"
+        }
+      ]
+    },
+    {
+      "slug": "avian-flu-mammal-spillover",
+      "title": "H5N1 Bird Flu Spreads in Mammals, Sporadic Human Cases",
+      "as_of": "2025-09-23",
+      "cluster": "H5N1",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "h5n1",
+          "label": "H5N1"
+        },
+        {
+          "slug": "zoonosis",
+          "label": "Zoonosis"
+        }
+      ]
+    },
+    {
+      "slug": "freight-slump-panama",
+      "title": "Global Freight Indices Slump on Weak Demand",
+      "as_of": "2025-09-23",
+      "cluster": "SHIPPING",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "shipping",
+          "label": "SHIPPING"
+        },
+        {
+          "slug": "trade-slowdown",
+          "label": "Trade Slowdown"
+        }
+      ]
+    },
+    {
+      "slug": "france-italy-yields",
+      "title": "France Downgrade as Yields Converge with Italy",
+      "as_of": "2025-09-23",
+      "cluster": "EURO SOV",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "euro-sov",
+          "label": "EURO SOV"
+        },
+        {
+          "slug": "sovereign-fiscal-stress",
+          "label": "Sovereign Fiscal Stress"
+        }
+      ]
+    },
+    {
+      "slug": "2025-09-23-brief",
+      "title": "Daily Risk Brief — 2025-09-23",
+      "as_of": "2025-09-23",
+      "cluster": null,
+      "event_uid": null,
+      "tags": []
+    },
+    {
+      "slug": "local-debt-timebomb",
+      "title": "China’s Hidden Local Debt Threatens Financial Stability",
+      "as_of": "2025-09-23",
+      "cluster": "CHINA CREDIT",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "china-credit",
+          "label": "CHINA CREDIT"
+        },
+        {
+          "slug": "local-debt-crisis",
+          "label": "Local Debt Crisis"
+        }
+      ]
+    },
+    {
+      "slug": "property-slump-defaults",
+      "title": "China Property Crisis Deepens with Developer Defaults",
+      "as_of": "2025-09-23",
+      "cluster": "CHINA CREDIT",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "china-credit",
+          "label": "CHINA CREDIT"
+        },
+        {
+          "slug": "property-bust",
+          "label": "Property Bust"
+        }
+      ]
+    },
+    {
+      "slug": "data-centers-grid",
+      "title": "AI Data Center Boom Tests Grid Limits",
+      "as_of": "2025-09-23",
+      "cluster": "AI POWER",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "ai-power",
+          "label": "AI POWER"
+        },
+        {
+          "slug": "infrastructure-risk",
+          "label": "Infrastructure Risk"
+        }
+      ]
+    },
+    {
+      "slug": "zero-day-volatility",
+      "title": "0DTE Options Boom Amplifies Crash Risk Fears",
+      "as_of": "2025-09-23",
+      "cluster": "ODTE",
+      "event_uid": null,
+      "tags": [
+        {
+          "slug": "odte",
+          "label": "ODTE"
+        },
+        {
+          "slug": "market-tail-risk",
+          "label": "Market Tail Risk"
+        }
+      ]
+    },
+    {
+      "slug": "2025-09-22-brief",
+      "title": "Daily Risk Brief — 2025-09-22",
+      "as_of": "2025-09-22",
+      "cluster": null,
+      "event_uid": null,
+      "tags": []
+    }
+  ]
+}

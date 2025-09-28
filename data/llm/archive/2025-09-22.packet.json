@@ -1,0 +1,40 @@
+{
+  "as_of": "2025-09-22",
+  "methodology_note": "Late-cycle trigger monitor; 50 baseline; decay if stale.",
+  "clusters": [
+    { "id": "US_CRE", "name": "US Commercial Real Estate", "score": 58, "z": 0.6, "tripwires_breached": [], "indicators": {}, "evidence_bullets": ["Bootstrap packet."], "sources": ["https://example.com/cre"] },
+    { "id": "EURO_SOV", "name": "Euro Sovereigns", "score": 55, "z": 0.3, "tripwires_breached": [], "indicators": {}, "evidence_bullets": ["Bootstrap packet."], "sources": ["https://example.com/euro"] },
+    { "id": "AI_POWER", "name": "AI Data Center Power", "score": 60, "z": 0.9, "tripwires_breached": [], "indicators": {}, "evidence_bullets": ["Bootstrap packet."], "sources": ["https://example.com/power"] },
+    { "id": "SHIPPING", "name": "Shipping Chokepoints", "score": 52, "z": 0.1, "tripwires_breached": [], "indicators": {}, "evidence_bullets": ["Bootstrap packet."], "sources": ["https://example.com/shipping"] },
+    { "id": "ODTE", "name": "0DTE Market Structure", "score": 51, "z": 0.0, "tripwires_breached": [], "indicators": {}, "evidence_bullets": ["Bootstrap packet."], "sources": ["https://example.com/0dte"] },
+    { "id": "H5N1", "name": "H5N1 Health Risk", "score": 50, "z": 0.0, "tripwires_breached": [], "indicators": {}, "evidence_bullets": ["Bootstrap packet."], "sources": ["https://example.com/h5n1"] }
+  ],
+  "events_update": [
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "EURO_SOV",
+        "event_type": "sovereign_spread",
+        "primary_entities": ["Italy"],
+        "geography": ["IT", "EU"],
+        "instruments": ["BTP", "BUND", "10Y"],
+        "mechanism": "fiscal_risk",
+        "canonical_source": "https://example.com/euro"
+      },
+      "title": "Italy BTP-Bund spread on watch",
+      "phase": "watch",
+      "score": 58,
+      "confidence": "medium",
+      "indicators": { "btp_bund_spread_bps": 120 },
+      "tripwires": ["BTP_BUND_GT_225"],
+      "rationale": ["Bootstrap packet."],
+      "sources": ["https://example.com/euro"]
+    }
+  ],
+  "post": {
+    "slug": "2025-09-22-brief",
+    "title": "Daily Risk Brief — 2025-09-22",
+    "format": "html",
+    "content": "<h2>Top Movers</h2><ul><li>Bootstrap packet.</li></ul><h2>What Changed</h2><p>Initial bootstrap.</p><h2>Watch Next</h2><p>Tripwires to be populated.</p>"
+  }
+}

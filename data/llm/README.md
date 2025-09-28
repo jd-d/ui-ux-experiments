@@ -1,0 +1,1 @@
+Each update is one JSON file named ``YYYY-MM-DD.packet.json``. You can append a 24-hour timestamp before ``.packet.json`` (for example ``YYYY-MM-DD-1830.packet.json``) to force ordering when multiple packets share the same ``as_of`` date. The build will ingest the newest packet and update the site.

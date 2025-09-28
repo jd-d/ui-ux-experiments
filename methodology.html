@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Methodology — Trigger Risk Monitor</title>
+    <meta
+      name="description"
+      content="How the Trigger Risk Monitor scores catalysts, maintains continuity, and sources evidence."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="logo" href="index.html">Trigger Risk Monitor</a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html#leaderboard">Leaderboard</a></li>
+            <li><a href="index.html#latest">Latest briefings</a></li>
+            <li><a href="posts/index.html">All briefings</a></li>
+            <li><a href="methodology.html">Methodology</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="index.html#dashboard">Trigger dashboard</a></li>
+            <li><a href="index.html#playbook">Playbook</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="post-main">
+      <div class="container post-layout">
+        <article class="post">
+          <header class="post-header">
+            <h1>Methodology</h1>
+            <p class="post-subtitle">
+              How daily AI research packets flow into the Trigger Risk Monitor.
+            </p>
+          </header>
+
+          <section>
+            <p>
+              The Trigger Risk Monitor tracks catalysts most likely to set off the next break in the
+              18.6-year land and credit cycle. Every research cycle begins with a structured ChatGPT Deep
+              Research prompt, flows through a JSON packet, and ends with an automated ingest that updates
+              the site. This page walks through that pipeline.
+            </p>
+          </section>
+
+          <section>
+            <h2>Pipeline at a glance</h2>
+            <p>
+              Each daily run links the research agent directly to the static site. Three lightweight stages
+              keep the process transparent and repeatable:
+            </p>
+            <div class="pipeline-flow">
+              <div class="pipeline-card">
+                <span class="pipeline-card__step">1</span>
+                <h3>Prompted deep research</h3>
+                <p>
+                  ChatGPT Deep Research executes the “Bootstrap &amp; Rebase — 18.6-Year Cycle Trigger
+                  Monitor” brief to surface late-cycle triggers.
+                </p>
+                <ul class="pipeline-card__list">
+                  <li>Scans six standing clusters for 1–8 month risks.</li>
+                  <li>Produces a memo (R1) and structured JSON packet (R2) backed by primary sources.</li>
+                </ul>
+              </div>
+              <div class="pipeline-card">
+                <span class="pipeline-card__step">2</span>
+                <h3>Structured packet</h3>
+                <p>
+                  The agent returns a deterministic payload that maps Top Findings to event updates and
+                  HTML briefings.
+                </p>
+                <ul class="pipeline-card__list">
+                  <li>Required keys: <code>as_of</code>, <code>methodology_note</code>, <code>clusters</code>, <code>events_update</code>, <code>briefings</code>, <code>post</code>.</li>
+                  <li>Stable fingerprints keep event identities consistent between updates.</li>
+                </ul>
+              </div>
+              <div class="pipeline-card">
+                <span class="pipeline-card__step">3</span>
+                <h3>Automatic ingestion</h3>
+                <p>
+                  <code>scripts/ingest_llm_packet.py</code> validates the packet, merges it into
+                  <code>data/events.json</code>, and refreshes the leaderboard.
+                </p>
+                <ul class="pipeline-card__list">
+                  <li>Applies decay, rebuilds the Top-10, and writes new briefings.</li>
+                  <li>Keeps posts, latest briefings, and source links synchronized.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Step 1 — Deep research brief</h2>
+            <p>
+              Every cycle starts with the ChatGPT Deep Research prompt “Bootstrap &amp; Rebase — 18.6-Year
+              Cycle Trigger Monitor.” The objective is to surface systemic trigger candidates analogous to
+              events like Jay Cooke (1873), the OPEC embargo (1973), or Lehman Brothers (2008) while keeping
+              the focus on the next one to eight months.
+            </p>
+            <p>The prompt instructs the researcher to:</p>
+            <ul>
+              <li>Work in the Europe/Amsterdam timezone and stamp the JSON <code>as_of</code> field with the run date.</li>
+              <li>Re-score any live Top-10 event found in <code>data/leaderboard.json</code> and propose new credible candidates.</li>
+              <li>Favor primary evidence from regulators, operators, and official data releases over commentary.</li>
+              <li>
+                Keep each event’s <code>fingerprint_fields</code> stable—covering cluster, event type,
+                entities, geography, instruments, mechanism, and canonical source—unless the narrative truly changes.
+              </li>
+            </ul>
+            <p>
+              The output memo (R1) follows a 500–900 word structure with Top Findings, Evidence Highlights,
+              Watch Next &amp; Tripwires, and Sources. The JSON packet (R2) mirrors those findings so the site
+              can ingest updates deterministically.
+            </p>
+            <div class="cluster-infobox">
+              <h3>Standing trigger clusters</h3>
+              <ul class="cluster-infobox__list">
+                <li><strong>US_CRE</strong> — U.S. commercial real estate stress, especially office refinancing.</li>
+                <li><strong>EURO_SOV</strong> — Sovereign funding pressure inside the euro area.</li>
+                <li><strong>AI_POWER</strong> — Supply-chain and grid strain tied to AI-scale compute build-outs.</li>
+                <li><strong>SHIPPING</strong> — Maritime chokepoints and freight disruptions.</li>
+                <li><strong>ODTE</strong> — Options-driven volatility around zero-days-to-expiry positioning.</li>
+                <li><strong>H5N1</strong> — Avian influenza developments with human or agricultural impact.</li>
+              </ul>
+              <p class="cluster-infobox__note">
+                The researcher may add one extra cluster when strong primary evidence justifies the inclusion.
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Step 2 — Structured packet</h2>
+            <p>
+              The research agent returns two synchronized artifacts: the narrative memo for human readers and
+              the machine-readable packet that powers the site. R2 is the source of truth for scoring and
+              publishing.
+            </p>
+            <div class="callout">
+              <span class="callout__label">Outputs</span>
+              <p><strong>R1:</strong> 500–900 word memo that orders Top Findings by importance and cites every claim.</p>
+              <p><strong>R2:</strong> Strict JSON file that links each finding to an event update, HTML briefing, and daily post.</p>
+            </div>
+            <p>
+              The JSON schema keeps ingestion deterministic. Required top-level keys include
+              <code>as_of</code>, a ≤140 character <code>methodology_note</code>, <code>clusters</code>,
+              <code>events_update</code>, <code>briefings</code>, and <code>post</code>. Each event carries a
+              deterministic <code>uid</code>, ties back to its finding via <code>r1_index</code>, and ships
+              with HTML constrained to accessible tags.
+            </p>
+            <pre><code>{
+  "as_of": "2024-05-11",
+  "methodology_note": "Daily refresh of AI-researched triggers",
+  "clusters": [
+    {
+      "id": "US_CRE",
+      "score": 62,
+      "phase": "elevated",
+      "sources": ["https://trepp.com/report"]
+    }
+  ],
+  "events_update": [
+    {
+      "uid": "us_cre__liquidity-fractures__2024-05-11",
+      "r1_index": 0,
+      "fingerprint_fields": {
+        "cluster": "US_CRE",
+        "event_type": "funding/liquidity",
+        "canonical_source": "https://trepp.com"
+      },
+      "score": 62,
+      "phase": "elevated",
+      "confidence": "high"
+    }
+  ],
+  "briefings": [
+    {
+      "event_uid": "us_cre__liquidity-fractures__2024-05-11",
+      "slug": "liquidity-fractures",
+      "format": "html",
+      "content": "<h2>What changed</h2><p>...</p>"
+    }
+  ],
+  "post": {
+    "slug": "2024-05-11-brief",
+    "title": "Daily Risk Brief — 2024-05-11",
+    "format": "html",
+    "content": "<h2>Top movers</h2><p>...</p>"
+  }
+}</code></pre>
+            <p>
+              Event briefings appear twice—nested under each update and mirrored in the top-level
+              <code>briefings</code> array—so the site can list them on the homepage and render standalone
+              posts without ambiguity.
+            </p>
+          </section>
+
+          <section>
+            <h2>Step 3 — Automated ingestion &amp; scoring</h2>
+            <p>
+              <code>scripts/ingest_llm_packet.py</code> bridges the AI packet and the published site. When a
+              packet lands in <code>data/llm/</code>, the script selects the latest file for that
+              <code>as_of</code> date and executes a deterministic update:
+            </p>
+            <ul>
+              <li><strong>Schema validation:</strong> confirms required keys and normalizes URLs before processing.</li>
+              <li><strong>Fingerprint continuity:</strong> canonicalizes <code>fingerprint_fields</code>, computes a SHA-256 fingerprint (ignoring <code>canonical_source</code>), and merges updates into <code>data/events.json</code>.</li>
+              <li><strong>Score application:</strong> updates scores, phases, confidence levels, indicators, tripwires, rationale, sources, and history entries with the new <code>as_of</code> date.</li>
+              <li><strong>Decay &amp; ranking:</strong> applies the decay rule to watch, elevated, and critical events, then rebuilds the Top-10 by score, confidence, and recency.</li>
+              <li><strong>Publishing:</strong> writes refreshed registries, generates per-event briefings in <code>posts/</code>, updates <code>data/latest_briefings.json</code>, and renders the daily post.</li>
+            </ul>
+            <aside class="callout callout--accent">
+              <span class="callout__label">Why the decay rule matters</span>
+              <p>
+                Scores start at a 50 baseline. Fresh research can push them higher or lower, but watch,
+                elevated, and critical events decay by three points per day after a seven-day grace period.
+              The decay keeps the leaderboard focused on catalysts with current evidence while leaving
+              resolved events untouched.
+            </p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Event continuity &amp; score history</h2>
+            <p>
+              Duplicate stories are handled by pairing stable event fingerprints from the researcher with
+              deterministic matching inside the ingest script. The agent is responsible for keeping
+              <code>fingerprint_fields</code> steady—cluster, event type, entities, geography, instruments,
+              and mechanism—so the same catalyst reappears with the same fingerprint. During ingestion,
+              the script canonicalizes those fields (lowercasing, trimming, sorting lists) and hashes
+              them. The <code>canonical_source</code> is still normalized and stored for provenance, but it
+              is excluded from the hash so citing a different article does not fracture the timeline.
+              If the hash already exists, the update is merged into the existing record instead of
+              creating a new entry.
+            </p>
+            <ul>
+              <li>
+                <strong>Primary match:</strong> the SHA-256 fingerprint ties each packet update to a single
+                event in <code>data/events.json</code>, preventing duplicate leaderboard entries even if the
+                daily score jumps.
+              </li>
+              <li>
+                <strong>Score trail:</strong> every merge appends an <code>{as_of, score, phase}</code>
+                tuple to the event’s <code>history</code> array, alongside a structured article log with
+                briefing title, canonical source, and per-update source list. Long-running catalysts
+                therefore show both a quantitative score timeline and a citation ledger that can be
+                surfaced in dashboards or external analysis.
+              </li>
+            </ul>
+            <p>
+              When a new packet drifts from prior fingerprints—because the researcher renamed an entity or
+              changed instruments—the ingest now runs a fuzzy guardrail before creating a fresh event. It
+              scores the update against the registry using token overlap across entities, geography, and
+              instruments plus <code>SequenceMatcher</code> string similarity on mechanisms and titles. If
+              the composite score clears a configured threshold, the update is merged into the closest
+              existing event and the combined fingerprint is refreshed so future packets match exactly.
+            </p>
+          </section>
+
+          <section>
+            <h2>Publishing &amp; audit trail</h2>
+            <p>
+              Sanitized HTML fragments from the packet become briefing pages inside <code>posts/</code>, and a
+              compact index is saved to <code>data/latest_briefings.json</code> for the homepage. Source URLs
+              travel with every event so readers can audit the evidence chain.
+            </p>
+            <ul>
+              <li>Each briefing is mirrored in the registry with score history, rationale, tripwires, and a table of prior briefings at the bottom of the page.</li>
+              <li>Leaderboard entries expose source links alongside phase, score, and last updated date.</li>
+              <li>Canonicalized URLs and deduplicated lists prevent drift between successive updates, even when the canonical source changes.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Data access &amp; reuse</h2>
+            <p>
+              The full event registry lives in <code>data/events.json</code>, while the live Top-10 used on
+              the homepage sits in <code>data/leaderboard.json</code>. Daily posts and per-event pages render
+              to <code>posts/&lt;slug&gt;.html</code> with summaries indexed in <code>data/latest_briefings.json</code>.
+            </p>
+            <p>
+              These files are designed for reuse. Analysts can download the JSON datasets, replicate the
+              leaderboard logic, or build their own monitors using the same fingerprint framework and decay
+              rules documented above.
+            </p>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <a class="logo" href="#top">Trigger Risk Monitor</a>
+          <p class="footer-note">
+            Independent research on the 18.6-year land cycle. Built for investors who want to see turning
+            points before the crowd.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html#latest">Latest briefings</a>
+          <a href="methodology.html">Methodology</a>
+          <a href="glossary.html">Glossary</a>
+          <a href="index.html#dashboard">Trigger dashboard</a>
+          <a href="index.html#playbook">Playbook</a>
+          <a href="posts/index.html">All briefings</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

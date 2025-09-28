@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Glossary — Trigger Risk Monitor</title>
+    <meta
+      name="description"
+      content="Definitions for cycle stages, dashboard states, and scoring fields that power the Trigger Risk Monitor."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="logo" href="index.html">Trigger Risk Monitor</a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html#leaderboard">Leaderboard</a></li>
+            <li><a href="index.html#latest">Latest briefings</a></li>
+            <li><a href="posts/index.html">All briefings</a></li>
+            <li><a href="methodology.html">Methodology</a></li>
+            <li><a href="glossary.html" aria-current="page">Glossary</a></li>
+            <li><a href="index.html#dashboard">Trigger dashboard</a></li>
+            <li><a href="index.html#playbook">Playbook</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="post-main">
+      <div class="container post-layout">
+        <article class="post">
+          <header class="post-header">
+            <h1>Trigger Monitor glossary</h1>
+            <p class="post-subtitle">
+              A reference for the cycle stage labels, dashboard callouts, and scoring fields that appear across the site.
+            </p>
+          </header>
+
+          <section>
+            <h2>Cycle position</h2>
+            <p>
+              The homepage hero distills the 18.6-year land cycle into a single stage label (for example, “Late Expansion”) and a
+              stress qualifier such as “Fragility heightened.” That snapshot is curated by site maintainers using the live
+              leaderboard and latest briefings produced from the ingestion script, then stamped with an update note (currently
+              “Baseline view updated 24 September 2025”).
+            </p>
+            <p>
+              Stages advance when multiple clusters in the event registry shift phases or scores. Maintainers mark “Late
+              Expansion” when macro growth is still running, yet the leaderboard is dominated by elevated or critical risks.
+              “Fragility heightened” flags that overlapping dashboard pillars are flashing High stress or Elevated, signalling
+              that cracks are spreading across domains even before an outright break.
+            </p>
+            <div class="callout">
+              <span class="callout__label">Current inputs</span>
+              <ul>
+                <li>
+                  <strong>Leaderboard events:</strong> Scores and phases are sourced from
+                  <code>data/leaderboard.json</code>, which is rebuilt by <code>scripts/ingest_llm_packet.py</code> on each
+                  packet ingest.
+                </li>
+                <li>
+                  <strong>Latest briefings:</strong> The hero links point to the freshest HTML briefings referenced in
+                  <code>data/latest_briefings.json</code>.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h2>Trigger dashboard states</h2>
+            <p>
+              The four dashboard cards map to the macro pillars tracked in every research cycle. Each state is assigned from the
+              underlying briefs cited in the card and signals the live level of stress:
+            </p>
+            <ul>
+              <li>
+                <strong>High stress:</strong> Observable dislocations already impair liquidity or funding (e.g., shipping
+                outages or stalled dealer balance sheets).
+              </li>
+              <li>
+                <strong>Elevated:</strong> Core indicators are deteriorating quickly, but market functioning remains intact.
+              </li>
+              <li>
+                <strong>On watch:</strong> Early deterioration that warrants closer monitoring, usually led by fiscal or policy
+                slippage.
+              </li>
+              <li>
+                <strong>Moderate:</strong> Mixed signals—some speculative excess persists, yet positioning or sentiment still
+                allows for further upside.
+              </li>
+            </ul>
+            <p>
+              When the ingestion pipeline refreshes posts, the dashboard bullets are replaced with the most recent briefs for
+              that pillar. Manual revisions should be paired with an entry in the transparency log below.
+            </p>
+          </section>
+
+          <section>
+            <h2>Trigger risk badges</h2>
+            <p>
+              Metadata ribbons on each briefing use colour-coded "Trigger risk" badges to
+              signal how far an event has progressed along the stress curve. The badge text
+              mirrors the scoring <em>phase</em> and provides a quick shorthand before readers
+              dive into the narrative detail.
+            </p>
+            <dl class="definition-list">
+              <dt id="trigger-risk-watch">Watch</dt>
+              <dd>
+                Early deterioration is visible, but market plumbing and policy backstops are
+                still holding. Analysts monitor tripwires to see whether the issue spreads or
+                resolves without intervention.
+              </dd>
+              <dt id="trigger-risk-elevated">Elevated</dt>
+              <dd>
+                Stress is now broad-based: price signals, positioning, or policy responses are
+                flashing amber. Follow-up briefs probe second-order contagion channels and the
+                probability of a move into outright crisis.
+              </dd>
+              <dt id="trigger-risk-critical">Critical</dt>
+              <dd>
+                Market function is impaired or institutional support is being overwhelmed.
+                Capital controls, defaults, or emergency policy actions are either underway or
+                imminent, demanding immediate playbook responses.
+              </dd>
+            </dl>
+          </section>
+
+          <section>
+            <h2>Event taxonomy</h2>
+            <p>
+              Each briefing inherits a structured classification from the ingest pipeline.
+              Event types describe the mechanism of stress, while clusters group related risks
+              so cross-cutting signals remain linked over time.
+            </p>
+            <h3>Event types</h3>
+            <dl class="definition-list">
+              <dt id="banking-strain">Banking strain</dt>
+              <dd>Runs, liquidity gaps, or capital shortfalls across depository lenders.</dd>
+              <dt id="climate-disruption">Climate disruption</dt>
+              <dd>
+                Extreme weather or climate-driven shocks that curtail production, mobility, or
+                critical services.
+              </dd>
+              <dt id="cre-credit-crunch">CRE credit crunch</dt>
+              <dd>
+                Funding stress specific to commercial real estate exposures, especially for
+                lenders rolling short-dated debt.
+              </dd>
+              <dt id="grid-stress">Grid stress</dt>
+              <dd>
+                Power-generation or transmission bottlenecks that threaten rolling outages or
+                forced curtailment.
+              </dd>
+              <dt id="infrastructure-risk">
+                Infrastructure risk
+                <span id="infrastructure" class="sr-only">(alias: Infrastructure)</span>
+              </dt>
+              <dd>
+                Structural failures in transport, energy, or communications networks with
+                systemic spillovers.
+              </dd>
+              <dt id="local-debt-crisis">Local debt crisis</dt>
+              <dd>
+                Fiscal stress concentrated in municipal or provincial balance sheets, often via
+                opaque financing vehicles.
+              </dd>
+              <dt id="market-tail-risk">Market tail-risk</dt>
+              <dd>
+                Option structures, leverage, or positioning that could trigger non-linear price
+                moves under stress.
+              </dd>
+              <dt id="port-operational-failure">Port operational failure</dt>
+              <dd>
+                Physical damage, labour disputes, or chokepoint shutdowns that halt cargo
+                throughput.
+              </dd>
+              <dt id="property-bust">Property bust</dt>
+              <dd>
+                Broad-based real estate price declines undermining household wealth or developer
+                solvency.
+              </dd>
+              <dt id="sovereign-fiscal-stress">Sovereign fiscal stress</dt>
+              <dd>
+                Chronic deficits or debt-servicing burdens pushing governments toward market
+                exclusion or austerity.
+              </dd>
+              <dt id="sovereign-outlook-change">Sovereign outlook change</dt>
+              <dd>
+                Rating agencies revising forward guidance on a sovereign, signalling the next
+                likely move in the formal rating.
+              </dd>
+              <dt id="sovereign-rating-watch">Sovereign rating watch</dt>
+              <dd>
+                A formal watch status preceding an imminent upgrade or downgrade within the
+                agency review window.
+              </dd>
+              <dt id="trade-slowdown">Trade slowdown</dt>
+              <dd>
+                Persistent drops in shipping volumes, export orders, or customs receipts.
+              </dd>
+              <dt id="typhoon-disruption">Typhoon disruption</dt>
+              <dd>
+                Severe storms with cyclone characteristics that impair coastal or inland
+                infrastructure.
+              </dd>
+              <dt id="zoonosis">Zoonosis</dt>
+              <dd>
+                Animal-to-human disease transmission events with pandemic potential.
+              </dd>
+            </dl>
+            <h3>Event clusters</h3>
+            <dl class="definition-list">
+              <dt id="ai-power">AI POWER</dt>
+              <dd>
+                High-power compute infrastructure, from data centres to transformer supply
+                chains, where outages can ripple through the AI buildout.
+              </dd>
+              <dt id="agritech">Agritech</dt>
+              <dd>
+                Large-scale agricultural technology projects, including energy-intensive
+                irrigation and processing hubs that strain rural infrastructure.
+              </dd>
+              <dt id="china-credit">CHINA CREDIT</dt>
+              <dd>
+                China’s credit complex, including property developers, local government
+                vehicles, and bank balance sheets.
+              </dd>
+              <dt id="euro-sov">EURO SOV</dt>
+              <dd>
+                Euro-area sovereign risk, especially fiscal divergence between core and
+                periphery issuers.
+              </dd>
+              <dt id="h5n1">H5N1</dt>
+              <dd>
+                Avian influenza outbreaks and mutation risk at the animal-human interface.
+              </dd>
+              <dt id="odte">ODTE</dt>
+              <dd>
+                Zero-day and very short-dated options flows that can whip markets when liquidity
+                thins.
+              </dd>
+              <dt id="shipping">SHIPPING</dt>
+              <dd>
+                Maritime logistics corridors, covering ports, canals, and bulk carrier
+                availability.
+              </dd>
+              <dt id="us-cre">US CRE</dt>
+              <dd>
+                United States commercial real estate, spanning office, retail, and
+                income-producing multifamily credit.
+              </dd>
+            </dl>
+          </section>
+
+          <section>
+            <h2>Core scoring fields</h2>
+            <p>
+              Event updates in the JSON packet feed a canonical registry (<code>data/events.json</code>). That registry powers the
+              leaderboard, post metadata, and latest-briefing feed. Key fields behave as follows:
+            </p>
+            <dl class="definition-list">
+              <dt id="glossary-score">Score</dt>
+              <dd>
+                Numeric value clamped between 0 and 100. Ingested scores of 50 represent baseline vigilance, and stale events lose
+                three points per day once they are more than seven days old.
+              </dd>
+              <dt id="glossary-phase">Phase</dt>
+              <dd>
+                Discrete state (<em>watch</em>, <em>elevated</em>, or <em>critical</em>) that controls colour coding and determines
+                whether decay applies.
+              </dd>
+              <dt id="glossary-confidence">Confidence</dt>
+              <dd>Subjective strength of evidence (<em>high</em>, <em>medium</em>, <em>low</em>) carried into post metadata.</dd>
+              <dt id="glossary-indicators">Indicators</dt>
+              <dd>Quantitative hooks (e.g., spreads, load factors) that justify the phase or score.</dd>
+              <dt id="glossary-tripwires">Tripwires</dt>
+              <dd>Discrete developments that would force a score or phase reassessment.</dd>
+              <dt id="glossary-rationale">Rationale</dt>
+              <dd>
+                Short-form explanations supporting the current assessment. New entries are deduplicated against prior updates to
+                preserve provenance.
+              </dd>
+              <dt id="glossary-sources">Sources</dt>
+              <dd>
+                Canonical URLs kept to four per leaderboard row. During ingest, URLs are normalised to avoid duplicates.
+              </dd>
+              <dt id="glossary-history">History</dt>
+              <dd>
+                Time series of score changes. Each ingest appends a new entry so trends are visible to analysts reviewing the
+                registry.
+              </dd>
+              <dt id="glossary-fingerprint">Fingerprint</dt>
+              <dd>
+                Stable SHA-256 hash derived from cluster, event type, entities, geography, instruments, mechanism, and canonical
+                source. It guarantees continuity when an event is revisited.
+              </dd>
+            </dl>
+          </section>
+
+          <section>
+            <h2>Update provenance</h2>
+            <p>
+              Maintain transparency by logging the latest manual or automated refresh for high-visibility sections. Update this
+              table whenever the cycle position banner or dashboard gauges change.
+            </p>
+            <table class="definition-table">
+              <thead>
+                <tr>
+                  <th scope="col">Component</th>
+                  <th scope="col">Last refresh</th>
+                  <th scope="col">Method</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cycle position</td>
+                  <td>24 September 2025</td>
+                  <td>Manual Codex summary using latest leaderboard and briefings pending deterministic ingest support.</td>
+                </tr>
+                <tr>
+                  <td>Trigger dashboard</td>
+                  <td>24 September 2025</td>
+                  <td>Manual Codex review of liquidity, credit, fiscal, and sentiment briefs from the 24 September ingest.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <a class="logo" href="#top">Trigger Risk Monitor</a>
+          <p class="footer-note">
+            Independent research on the 18.6-year land cycle. Built for investors who want to see turning points before the
+            crowd.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html#latest">Latest briefings</a>
+          <a href="methodology.html">Methodology</a>
+          <a href="glossary.html">Glossary</a>
+          <a href="index.html#dashboard">Trigger dashboard</a>
+          <a href="index.html#playbook">Playbook</a>
+          <a href="posts/index.html">All briefings</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

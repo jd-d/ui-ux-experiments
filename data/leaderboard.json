@@ -1,0 +1,122 @@
+{
+  "as_of": "2025-09-26",
+  "note": "Scores 0–100; 50 baseline",
+  "risks": [
+    {
+      "id": "us_cre-959b5292f304",
+      "name": "Office Crash Triggers Record CRE Loan Defaults",
+      "score": 70.0,
+      "phase": "elevated",
+      "last_updated": "2025-09-23",
+      "cluster": "US_CRE",
+      "sources": [
+        "https://www.trepp.com/trepptalk/cmbs-delinquency-rate-increases-again-in-august-2025",
+        "https://commercialobserver.com/2025/08/brookfield-dmv-office-distress"
+      ]
+    },
+    {
+      "id": "shipping-665a2c2b3be2",
+      "name": "Typhoon Ragasa Disrupts Ports and Power Grids",
+      "score": 70.0,
+      "phase": "elevated",
+      "last_updated": "2025-09-26",
+      "cluster": "SHIPPING",
+      "sources": [
+        "https://www.reuters.com/business/environment/super-typhoon-lashes-hong-kong-with-hurricane-force-winds-heavy-rain-2025-09-23",
+        "https://www.reuters.com/world/asia-pacific/14-dead-eastern-taiwan-after-typhoon-unleashes-flood-2025-09-25"
+      ]
+    },
+    {
+      "id": "odte-b5ce83fd07b5",
+      "name": "China Power Grid Stress Surges",
+      "score": 70.0,
+      "phase": "elevated",
+      "last_updated": "2025-09-24",
+      "cluster": "ODTE",
+      "sources": []
+    },
+    {
+      "id": "shipping-40ed61d9c66d",
+      "name": "Typhoon Ragasa Triggers Port & Power Disruptions",
+      "score": 68.0,
+      "phase": "elevated",
+      "last_updated": "2025-09-25",
+      "cluster": "SHIPPING",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Typhoon_Ragasa"
+      ]
+    },
+    {
+      "id": "china_credit-e8b65ff2b462",
+      "name": "China Property Crisis Deepens with Developer Defaults",
+      "score": 65.0,
+      "phase": "elevated",
+      "last_updated": "2025-09-23",
+      "cluster": "CHINA_CREDIT",
+      "sources": [
+        "https://yipinstitute.org/policy/economic-implications-of-evergrande-collapse",
+        "https://www.scmp.com/business/china-business/article/3231779/chinas-property-slump-may-be-bottoming-analysts-point-signs-recovery-fitch-says-risks-remain"
+      ]
+    },
+    {
+      "id": "euro_sov-2a17a684fb87",
+      "name": "Thailand’s Credit Outlook Cut to Negative",
+      "score": 65.0,
+      "phase": "watch",
+      "last_updated": "2025-09-26",
+      "cluster": "EURO_SOV",
+      "sources": [
+        "https://www.fitchratings.com/research/sovereigns/fitch-revises-thailand-outlook-to-negative-affirms-at-bbb-24-09-2025",
+        "https://www.reuters.com/world/asia-pacific/thai-finance-minister-says-country-must-heed-fitch-warning-2025-09-25"
+      ]
+    },
+    {
+      "id": "ai_power-8dbdd5c002e9",
+      "name": "AI Data Center Boom Tests Grid Limits",
+      "score": 60.0,
+      "phase": "elevated",
+      "last_updated": "2025-09-23",
+      "cluster": "AI_POWER",
+      "sources": [
+        "https://www.nerc.com/pa/RAPA/ra/Reliability%20Assessments/NERC_SOR_2025.pdf",
+        "https://news.bgov.com/tech-and-telecom-law/data-centers-pose-threat-to-electric-grids-says-us-regulator"
+      ]
+    },
+    {
+      "id": "china_credit-263d32992dda",
+      "name": "China’s Hidden Local Debt Threatens Financial Stability",
+      "score": 60.0,
+      "phase": "elevated",
+      "last_updated": "2025-09-23",
+      "cluster": "CHINA_CREDIT",
+      "sources": [
+        "https://www.imf.org/en/Publications/CR/Issues/2025/04/30/Peoples-Republic-of-China-Financial-System-Assessment-Program-Financial-System-Stability-566570",
+        "https://www.atlanticcouncil.org/blogs/econographics/sinographs/beijing-extends-and-pretends-to-deal-with-its-mountain-of-local-government-debt"
+      ]
+    },
+    {
+      "id": "shipping-05ceacd6b31a",
+      "name": "Panama Canal Drought Restricts Shipping Traffic",
+      "score": 60.0,
+      "phase": "elevated",
+      "last_updated": "2025-09-23",
+      "cluster": "SHIPPING",
+      "sources": [
+        "https://supplychains.com/navigating-drought-panama-canal-imposes-restrictions-on-large-ships",
+        "https://lloydslist.maritimeintelligence.informa.com/"
+      ]
+    },
+    {
+      "id": "us_cre-bdea74833ce9",
+      "name": "Regional Banks Face CRE Maturity Wall",
+      "score": 60.0,
+      "phase": "watch",
+      "last_updated": "2025-09-23",
+      "cluster": "US_CRE",
+      "sources": [
+        "https://www.scotsmanguide.com/commercial/more-pain-to-come-for-regional-banks",
+        "https://www.reuters.com/business/yellen-concerned-about-us-commercial-real-estate-says-stresses-manageable-2024-02-06"
+      ]
+    }
+  ]
+}

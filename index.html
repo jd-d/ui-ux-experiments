@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trigger Risk Monitor &mdash; Tracking the 18.6-Year Cycle</title>
+    <meta
+      name="description"
+      content="Signal-driven blog that tracks macro, credit, and sentiment triggers that could puncture the late stage of the 18.6-year land cycle."
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      crossorigin
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="logo" href="index.html">Trigger Risk Monitor</a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="#leaderboard">Leaderboard</a></li>
+            <li><a href="#latest">Latest briefings</a></li>
+            <li><a href="posts/index.html">All briefings</a></li>
+            <li><a href="methodology.html">Methodology</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="#dashboard">Trigger dashboard</a></li>
+            <li><a href="#playbook">Playbook</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">18.6-Year Land Cycle Watch</p>
+            <h1>Keeping score of the pressure building ahead of the next downturn.</h1>
+            <p>
+              Liquidity, credit, fiscal, and sentiment data are parsed each week
+              to flag the catalysts most likely to trigger the next slide in the
+              property and risk asset complex.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#latest">Read this week's signals</a>
+              <a class="btn btn-secondary" href="#playbook">See the playbook</a>
+            </div>
+          </div>
+          <div class="hero-card" role="presentation">
+            <h2>Cycle Position</h2>
+            <p class="hero-card__subtitle">Late Expansion &bull; Fragility heightened</p>
+            <ul class="hero-card__indicators">
+              <li>
+                <span
+                  ><a href="posts/thailand_sovereign_watch.html"
+                    >Sovereign stress spreads to Thailand</a
+                  ></span
+                >
+                <strong class="indicator indicator--weakening">Weakening</strong>
+              </li>
+              <li>
+                <span
+                  ><a href="posts/office-crash-defaults.html"
+                    >CRE credit quality</a
+                  ></span
+                >
+                <strong class="indicator indicator--deteriorating">Deteriorating</strong>
+              </li>
+              <li>
+                <span
+                  ><a href="posts/china_power_grid_stress.html"
+                    >China grid blackouts</a
+                  ></span
+                >
+                <strong class="indicator indicator--deteriorating">Deteriorating</strong>
+              </li>
+            </ul>
+            <p class="hero-card__note">
+              Baseline view updated 24 September 2025. Recent briefs cover
+              <a href="posts/thailand_sovereign_watch.html"
+                >Thailand&rsquo;s rating watch</a
+              >,
+              <a href="posts/china_power_grid_stress.html"
+                >rolling blackouts in China</a
+              >,
+              and
+              <a href="posts/gulf_port_outage.html"
+                >a Gulf port outage straining trade</a
+              >.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="leaderboard" class="section section--light">
+        <div class="container section-header">
+          <h2>Top-10 Trigger Risk Leaderboard</h2>
+          <p>Latest scoring snapshot derived from the trigger registry.</p>
+        </div>
+        <div class="container" data-leaderboard>
+          <div class="leaderboard-card">
+            <p class="leaderboard-status" data-leaderboard-status>
+              Loading latest snapshot…
+            </p>
+            <div class="leaderboard-table-wrapper" data-leaderboard-wrapper hidden>
+              <table class="leaderboard-table">
+                <caption class="sr-only">Top ten trigger risks ordered by score</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Trigger</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Phase</th>
+                    <th scope="col">Last Update</th>
+                  </tr>
+                </thead>
+                <tbody data-leaderboard-body></tbody>
+              </table>
+            </div>
+            <div class="leaderboard-meta">
+              <p class="leaderboard-note" data-leaderboard-note></p>
+              <p class="leaderboard-asof" data-leaderboard-asof></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="latest" class="section section--light">
+        <div class="container section-header">
+          <h2>Latest briefing notes</h2>
+          <p>
+            High-signal developments from the last two weeks. Tap through for the
+            full write-up, data, and positioning cues.
+          </p>
+        </div>
+        <div class="container cards-grid" id="latest-cards" data-limit="6"></div>
+        <div class="container latest-archive-link">
+          <a class="btn btn-secondary" href="posts/index.html">Browse all briefings</a>
+        </div>
+      </section>
+
+      <section id="dashboard" class="section">
+        <div class="container section-header">
+          <h2>Trigger dashboard</h2>
+          <p>
+            A condensed view of the core macro pillars being monitored. The
+            gauges blend high-frequency data with structural cycle indicators.
+          </p>
+        </div>
+        <div class="container dashboard-grid">
+          <div class="dashboard-card">
+            <h3>Liquidity</h3>
+            <p>Dealer balance sheets, cross-border flows, central bank balance sheets.</p>
+            <div class="risk-meter" aria-label="Liquidity trigger risk meter">
+              <span class="risk-meter__label">Current status</span>
+              <span class="risk-meter__value risk-meter__value--high">High stress</span>
+            </div>
+            <ul class="list">
+              <li>
+                <a href="posts/gulf_port_outage.html"
+                  >36-hour outage at a key Gulf port stalled container throughput</a
+                >,
+                compounding global shipping bottlenecks.
+              </li>
+              <li>
+                <a href="posts/freight-slump-panama.html"
+                  >Shanghai export container index fell ~40% in early 2025</a
+                >,
+                pointing to softer trade financing flows.
+              </li>
+              <li>
+                <a href="posts/panama-canal-drought.html"
+                  >Panama Canal transit caps (32 ships/day)</a
+                >
+                continue to tie up shipping liquidity.
+              </li>
+            </ul>
+          </div>
+
+          <div class="dashboard-card">
+            <h3>Credit</h3>
+            <p>Bank lending standards, private credit spreads, default velocity.</p>
+            <div class="risk-meter" aria-label="Credit trigger risk meter">
+              <span class="risk-meter__label">Current status</span>
+              <span class="risk-meter__value risk-meter__value--elevated">Elevated</span>
+            </div>
+            <ul class="list">
+              <li>
+                <a href="posts/office-crash-defaults.html"
+                  >Office CMBS delinquencies hit ~11.7%</a
+                >,
+                the highest on record.
+              </li>
+              <li>
+                <a href="posts/regional-banks-cre-maturity.html"
+                  >About $2&nbsp;trillion in CRE loans mature by end-2025</a
+                >,
+                mostly sitting on regional bank books.
+              </li>
+              <li>
+                <a href="posts/property-slump-defaults.html"
+                  >Chinese developers remain in default workouts</a
+                >,
+                keeping spillover risk elevated.
+              </li>
+            </ul>
+          </div>
+
+          <div class="dashboard-card">
+            <h3>Fiscal &amp; Policy</h3>
+            <p>Treasury issuance, fiscal impulse, and policy space for rescue.</p>
+            <div class="risk-meter" aria-label="Fiscal trigger risk meter">
+              <span class="risk-meter__label">Current status</span>
+              <span class="risk-meter__value risk-meter__value--watch">On watch</span>
+            </div>
+            <ul class="list">
+              <li>
+                <a href="posts/france-italy-yields.html"
+                  >France&rsquo;s 10-year yield now matches Italy around 3.5%</a
+                >,
+                underscoring fiscal slippage.
+              </li>
+              <li>
+                <a href="posts/thailand_sovereign_watch.html"
+                  >Fitch placed Thailand on watch negative</a
+                >,
+                pushing regional funding costs higher.
+              </li>
+              <li>
+                <a href="posts/local-debt-timebomb.html"
+                  >LGFVs carry roughly &yen;58&nbsp;trillion in hidden debt</a
+                >,
+                limiting Beijing&rsquo;s stimulus room.
+              </li>
+            </ul>
+          </div>
+
+          <div class="dashboard-card">
+            <h3>Sentiment</h3>
+            <p>Risk appetite, housing turnover, and speculative positioning.</p>
+            <div class="risk-meter" aria-label="Sentiment trigger risk meter">
+              <span class="risk-meter__label">Current status</span>
+              <span class="risk-meter__value risk-meter__value--moderate">Moderate</span>
+            </div>
+            <ul class="list">
+              <li>
+                <a href="posts/zero-day-volatility.html"
+                  >0DTE options now dominate S&amp;P&nbsp;500 volumes</a
+                >,
+                keeping crash-feedback risk in focus.
+              </li>
+              <li>
+                <a href="posts/avian-flu-mammal-spillover.html"
+                  >H5N1 spillovers into mammals</a
+                >
+                sustain a low-probability, high-impact shock narrative.
+              </li>
+              <li>
+                <a href="posts/2025-09-24-daily-brief.html"
+                  >Latest monitor flags grid, sovereign, and supply chain shocks</a
+                >,
+                keeping risk appetite muted.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="playbook" class="section section--accent">
+        <div class="container playbook-grid">
+          <div class="playbook-intro">
+            <h2>Playbook for a late-cycle break</h2>
+            <p>
+              This framework blends structural signals (demographics, land and
+              credit cycles) with real-time data (liquidity, policy, risk
+              appetite). Triggers are mapped to probability bands and suggested
+              portfolio shifts.
+            </p>
+          </div>
+          <div class="playbook-card">
+            <h3>Trigger tiers</h3>
+            <ol>
+              <li>
+                <strong>Pressure building:</strong> Early warning from liquidity and
+                balance sheet data.
+              </li>
+              <li>
+                <strong>Cracks spreading:</strong> Credit and funding disruptions
+                move beyond niche markets.
+              </li>
+              <li>
+                <strong>Break point:</strong> Feedback loop hits real economy and
+                policy makers react.
+              </li>
+            </ol>
+            <p>
+              Every signal is plotted against these tiers to keep the roadmap
+              clear even when noise is high.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <a class="logo" href="#top">Trigger Risk Monitor</a>
+          <p class="footer-note">
+            Independent research on the 18.6-year land cycle. Built for investors
+            who want to see turning points before the crowd.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href="#latest">Latest briefings</a>
+          <a href="methodology.html">Methodology</a>
+          <a href="glossary.html">Glossary</a>
+          <a href="#dashboard">Trigger dashboard</a>
+          <a href="#playbook">Playbook</a>
+          <a href="posts/index.html">All briefings</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('[data-leaderboard]');
+        if (!container) {
+          return;
+        }
+
+        const tableBody = container.querySelector('[data-leaderboard-body]');
+        const status = container.querySelector('[data-leaderboard-status]');
+        const asOfEl = container.querySelector('[data-leaderboard-asof]');
+        const noteEl = container.querySelector('[data-leaderboard-note]');
+        const tableWrapper = container.querySelector('[data-leaderboard-wrapper]');
+
+        const normalizeKey = (value) =>
+          value ? value.toString().trim().toLowerCase() : '';
+
+        const showStatus = (message) => {
+          if (!status) return;
+          status.textContent = message;
+          status.classList.remove('leaderboard-status--hidden');
+          status.removeAttribute('aria-hidden');
+        };
+
+        const hideStatus = () => {
+          if (!status) return;
+          status.textContent = '';
+          status.classList.add('leaderboard-status--hidden');
+          status.setAttribute('aria-hidden', 'true');
+        };
+
+        const clearMeta = () => {
+          if (asOfEl) {
+            asOfEl.textContent = '';
+          }
+          if (noteEl) {
+            noteEl.textContent = '';
+            noteEl.hidden = true;
+          }
+        };
+
+        const hideTable = () => {
+          if (tableWrapper) {
+            tableWrapper.hidden = true;
+          }
+        };
+
+        const showTable = () => {
+          if (tableWrapper) {
+            tableWrapper.hidden = false;
+          }
+        };
+
+        const showEmpty = () => {
+          if (tableBody) {
+            tableBody.innerHTML = '';
+          }
+          hideTable();
+          clearMeta();
+          showStatus('No items yet.');
+        };
+
+        Promise.all([
+          fetch('./data/leaderboard.json', { cache: 'no-store' }).then((response) => {
+            if (!response.ok) {
+              throw new Error('Missing leaderboard');
+            }
+            return response.json();
+          }),
+          fetch('./data/latest_briefings.json', { cache: 'no-store' })
+            .then((response) => (response.ok ? response.json() : null))
+            .catch(() => null),
+          fetch('./data/briefings_archive.json', { cache: 'no-store' })
+            .then((response) => (response.ok ? response.json() : null))
+            .catch(() => null),
+        ])
+          .then(([data, latest, archive]) => {
+            if (!data || !Array.isArray(data.risks) || data.risks.length === 0) {
+              showEmpty();
+              return;
+            }
+
+            const slugMap = new Map();
+            const addSlug = (title, slug) => {
+              const titleKey = normalizeKey(title);
+              const slugValue = slug ? String(slug).trim() : '';
+              if (titleKey && slugValue && !slugMap.has(titleKey)) {
+                slugMap.set(titleKey, slugValue);
+              }
+            };
+
+            if (archive && Array.isArray(archive.items)) {
+              archive.items.forEach((item) => {
+                if (item) {
+                  addSlug(item.title, item.slug);
+                }
+              });
+            }
+
+            if (latest && Array.isArray(latest.items)) {
+              latest.items.forEach((item) => {
+                if (item) {
+                  addSlug(item.title, item.slug);
+                }
+              });
+            }
+
+            const risksToShow = data.risks.slice(0, 10);
+            if (!risksToShow.length) {
+              showEmpty();
+              return;
+            }
+
+            hideStatus();
+
+            if (tableBody) {
+              tableBody.innerHTML = '';
+              risksToShow.forEach((risk, index) => {
+                const row = document.createElement('tr');
+                row.className = 'leaderboard-row';
+                if (index < 3) {
+                  row.classList.add('leaderboard-row--top', `leaderboard-row--${index + 1}`);
+                }
+
+                const rankCell = document.createElement('td');
+                rankCell.className = 'leaderboard-cell leaderboard-cell--rank';
+                rankCell.setAttribute('data-label', 'Rank');
+                const rankBadge = document.createElement('span');
+                rankBadge.className = 'leaderboard-rank';
+                if (index < 3) {
+                  rankBadge.classList.add(`leaderboard-rank--${index + 1}`);
+                }
+                rankBadge.textContent = String(index + 1).padStart(2, '0');
+                rankCell.appendChild(rankBadge);
+                row.appendChild(rankCell);
+
+                const triggerCell = document.createElement('td');
+                triggerCell.className = 'leaderboard-cell leaderboard-cell--trigger';
+                triggerCell.setAttribute('data-label', 'Trigger');
+                const triggerWrapper = document.createElement('div');
+                triggerWrapper.className = 'leaderboard-trigger';
+                const riskName = risk && risk.name ? String(risk.name) : 'Unnamed risk';
+                const titleKey = normalizeKey(riskName);
+                const slug = slugMap.get(titleKey);
+                if (slug) {
+                  const link = document.createElement('a');
+                  link.className = 'leaderboard-title';
+                  link.href = `posts/${slug}.html`;
+                  link.textContent = riskName;
+                  triggerWrapper.appendChild(link);
+                } else {
+                  const titleSpan = document.createElement('span');
+                  titleSpan.className = 'leaderboard-title';
+                  titleSpan.textContent = riskName;
+                  triggerWrapper.appendChild(titleSpan);
+                }
+                if (risk && risk.cluster) {
+                  const clusterBadge = document.createElement('span');
+                  clusterBadge.className = 'leaderboard-cluster';
+                  clusterBadge.textContent = String(risk.cluster);
+                  triggerWrapper.appendChild(clusterBadge);
+                }
+                triggerCell.appendChild(triggerWrapper);
+                row.appendChild(triggerCell);
+
+                const scoreCell = document.createElement('td');
+                scoreCell.className = 'leaderboard-cell leaderboard-cell--score';
+                scoreCell.setAttribute('data-label', 'Score');
+                const scoreWrapper = document.createElement('div');
+                scoreWrapper.className = 'leaderboard-score';
+                const scoreValueEl = document.createElement('span');
+                scoreValueEl.className = 'leaderboard-score__value';
+                const numericScore = Number.parseFloat(risk && risk.score);
+                if (Number.isFinite(numericScore)) {
+                  const rounded = Number.isInteger(numericScore)
+                    ? numericScore.toString()
+                    : numericScore.toFixed(1);
+                  scoreValueEl.textContent = rounded;
+                } else {
+                  scoreValueEl.textContent = '—';
+                }
+                scoreWrapper.appendChild(scoreValueEl);
+                const meter = document.createElement('div');
+                meter.className = 'leaderboard-score__meter';
+                meter.setAttribute('aria-hidden', 'true');
+                const fill = document.createElement('span');
+                fill.className = 'leaderboard-score__fill';
+                if (Number.isFinite(numericScore)) {
+                  const clampedScore = Math.max(0, Math.min(100, numericScore));
+                  fill.style.width = `${clampedScore}%`;
+                } else {
+                  fill.style.width = '0%';
+                  meter.classList.add('is-empty');
+                }
+                meter.appendChild(fill);
+                scoreWrapper.appendChild(meter);
+                scoreCell.appendChild(scoreWrapper);
+                row.appendChild(scoreCell);
+
+                const phaseCell = document.createElement('td');
+                phaseCell.className = 'leaderboard-cell leaderboard-cell--phase';
+                phaseCell.setAttribute('data-label', 'Phase');
+                const rawPhase = risk && risk.phase ? String(risk.phase) : '';
+                const phaseText = rawPhase
+                  ? rawPhase.charAt(0).toUpperCase() + rawPhase.slice(1)
+                  : '—';
+                const phaseKey = normalizeKey(rawPhase).replace(/[^a-z0-9]+/g, '-');
+                const phaseBadge = document.createElement('span');
+                phaseBadge.className = 'leaderboard-phase';
+                if (phaseKey) {
+                  phaseBadge.classList.add(`leaderboard-phase--${phaseKey}`);
+                }
+                phaseBadge.textContent = phaseText;
+                phaseCell.appendChild(phaseBadge);
+                row.appendChild(phaseCell);
+
+                const updatedCell = document.createElement('td');
+                updatedCell.className = 'leaderboard-cell leaderboard-cell--updated';
+                updatedCell.setAttribute('data-label', 'Last Update');
+                const updatedText = risk && risk.last_updated ? String(risk.last_updated) : '—';
+                updatedCell.textContent = updatedText;
+                row.appendChild(updatedCell);
+
+                tableBody.appendChild(row);
+              });
+            }
+
+            showTable();
+
+            if (noteEl) {
+              const note = data.note ? String(data.note) : '';
+              noteEl.textContent = note;
+              noteEl.hidden = !note;
+            }
+
+            if (asOfEl) {
+              const asOfValue = data.as_of ? `As of ${data.as_of}` : '';
+              asOfEl.textContent = asOfValue;
+            }
+          })
+          .catch(() => {
+            showEmpty();
+          });
+      });
+    </script>
+    <script src="assets/js/main.js" defer></script>
+	<script src="assets/js/latest.js"></script>
+  </body>
+</html>

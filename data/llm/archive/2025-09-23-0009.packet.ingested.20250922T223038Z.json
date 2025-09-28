@@ -1,0 +1,546 @@
+{
+  "as_of": "2025-09-22",
+  "methodology_note": "Scores use 50 as a baseline (average risk), adjusted based on fresh evidence and structural signals as of the date above.",
+  "clusters": [
+    {
+      "id": "US_CRE",
+      "name": "US Commercial Real Estate",
+      "score": 65,
+      "z": 0.0,
+      "tripwires_breached": [
+        "Office CMBS delinquency at record high (11.7%)",
+        "Regional banks tightening CRE credit"
+      ],
+      "indicators": {
+        "Office CMBS delinquency (%)": 11.66,
+        "CRE loans maturing thru 2025 ($)": 2000000000000
+      },
+      "evidence_bullets": [
+        "Office mortgage defaults surging – office CMBS delinquency reached 11.66% (all-time high) [oai_citation:103‡trepp.com](https://www.trepp.com/trepptalk/cmbs-delinquency-rate-increases-again-in-august-2025#:~:text=The%20Trepp%20CMBS%20Delinquency%20Rate,9%20billion%20in%20July%2C%20respectively)",
+        "Regional/small banks hold ~70% of maturing CRE debt, raising systemic concerns [oai_citation:104‡scotsmanguide.com](https://www.scotsmanguide.com/commercial/more-pain-to-come-for-regional-banks/#:~:text=Here%20is%20one%20more%20statistic%3A,existential%20threat%20for%20some%20landlords)"
+      ],
+      "sources": [
+        "https://www.trepp.com/trepptalk/cmbs-delinquency-rate-increases-again-in-august-2025",
+        "https://www.scotsmanguide.com/commercial/more-pain-to-come-for-regional-banks/"
+      ]
+    },
+    {
+      "id": "EURO_SOV",
+      "name": "Eurozone Sovereign Risk",
+      "score": 55,
+      "z": 0.0,
+      "tripwires_breached": [
+        "France 10Y yield = Italy 10Y yield (~3.5%)",
+        "Fitch downgrade of France (Sept 2025)"
+      ],
+      "indicators": {
+        "France 10Y bond yield (%)": 3.48,
+        "Italy 10Y bond yield (%)": 3.48
+      },
+      "evidence_bullets": [
+        "France’s borrowing costs jumped – 10Y yield ~3.5%, matching Italy’s for first time [oai_citation:105‡reuters.com](https://www.reuters.com/markets/europe/why-france-italys-10-year-borrowing-costs-match-first-time-2025-09-18/#:~:text=Italian%20and%20French%2010,according%20to%20LSEG%20data)",
+        "Fitch cut France’s credit rating, citing political/fiscal uncertainty [oai_citation:106‡reuters.com](https://www.reuters.com/markets/europe/why-france-italys-10-year-borrowing-costs-match-first-time-2025-09-18/#:~:text=Fitch%20ratings%20cut%20France%27s%20rating,in%20less%20than%20two%20years); Italy, meanwhile, nears EDP exit with deficit ~3% [oai_citation:107‡reuters.com](https://www.reuters.com/markets/europe/why-france-italys-10-year-borrowing-costs-match-first-time-2025-09-18/#:~:text=France%27s%20Lecornu%20is%20racing%20to,the%20management%20of%20public%20finances)"
+      ],
+      "sources": [
+        "https://www.reuters.com/markets/europe/why-france-italys-10-year-borrowing-costs-match-first-time-2025-09-18/",
+        "https://www.consilium.europa.eu/en/press/press-releases/2024/07/26/stability-and-growth-pact-council-launches-excessive-deficit-procedures-against-seven-member-states/"
+      ]
+    },
+    {
+      "id": "AI_POWER",
+      "name": "AI - Power & Grid Stress",
+      "score": 60,
+      "z": 0.0,
+      "tripwires_breached": [
+        "NERC declares data centers a major reliability risk (2025 report)",
+        "DOE warns +50GW capacity needed by 2030 for AI loads"
+      ],
+      "indicators": {
+        "Data centers % of US electricity": 4.4,
+        "Est. new peak load by 2030 (GW)": 50
+      },
+      "evidence_bullets": [
+        "NERC (June 2025) flagged rapid data center expansion as a significant near-term grid reliability challenge [oai_citation:108‡electric.coop](https://www.electric.coop/rapid-data-center-development-challenges-grid-reliability-nerc-report-says#:~:text=Huge%2C%20electricity,North%20American%20Electric%20Reliability%20Corp)",
+        "DOE projects ~50 GW of additional power supply needed by 2030 due to AI/data center load growth [oai_citation:109‡energy.gov](https://www.energy.gov/sites/default/files/2025-07/DOE_Fact_Sheet_Grid_Report_July_2025.pdf#:~:text=innovate,The%20energy%20infrastructure)"
+      ],
+      "sources": [
+        "https://www.nerc.com/pa/RAPA/ra/Pages/default.aspx",
+        "https://www.energy.gov/sites/default/files/2025-07/DOE_Fact_Sheet_Grid_Report_July_2025.pdf"
+      ]
+    },
+    {
+      "id": "SHIPPING",
+      "name": "Global Shipping & Freight",
+      "score": 55,
+      "z": 0.0,
+      "tripwires_breached": [
+        "Early-2025 freight indices at multiyear lows (demand slump)",
+        "Panama Canal drought-triggered draft limits (June 2025)"
+      ],
+      "indicators": {
+        "Drewry WCI (USD per 40ft)": 1913,
+        "Panama Canal max draft (feet)": 43.5
+      },
+      "evidence_bullets": [
+        "UNCTAD noted freight rate indices fell in early 2025, reflecting weaker trade volumes [oai_citation:110‡unctad.org](https://unctad.org/publication/global-trade-update-march-2025#:~:text=billion,dependent%20sectors)",
+        "Panama Canal imposed draft restrictions (~13.3m) in mid-2025 due to drought, risking delays in ~3-5% of world trade transits [oai_citation:111‡supplychains.com](https://supplychains.com/navigating-drought-panama-canal-imposes-restrictions-on-large-ships/#:~:text=The%20Depth%20Dilemma) [oai_citation:112‡supplychains.com](https://supplychains.com/navigating-drought-panama-canal-imposes-restrictions-on-large-ships/#:~:text=The%20canal%20authorities%20aim%20to,19%20pandemic)"
+      ],
+      "sources": [
+        "https://unctad.org/publication/global-trade-update-march-2025",
+        "https://supplychains.com/navigating-drought-panama-canal-imposes-restrictions-on-large-ships/"
+      ]
+    },
+    {
+      "id": "ODTE",
+      "name": "0DTE Options & Dealer Positioning",
+      "score": 50,
+      "z": 0.0,
+      "tripwires_breached": [
+        "0DTE volume >50% of SPX options (sustained)",
+        "Analysts scenario of >20% intraday crash via 0DTE unwinding"
+      ],
+      "indicators": {
+        "0DTE share of SPX option volume (%)": 50,
+        "Daily SPX 0DTE notional (~$)": 1000000000000
+      },
+      "evidence_bullets": [
+        "Zero-day options now account for roughly half of S&P 500 option volume (vs ~5% in 2016) [oai_citation:113‡bis.org](https://www.bis.org/publ/qtrpdf/r_qt2403x.htm?ref=investo.global#:~:text=relatively%20cheap%20and%20provide%20a,but%20on%20rare%20occasions%20generates), driven by retail and algo trading",
+        "JPMorgan warned that an initial 5% market drop on a non-event day could, in a worst case, spur a cascade to a ~25% intraday crash due to 0DTE dynamics [oai_citation:114‡reuters.com](https://www.reuters.com/markets/europe/0dte-options-trading-could-exacerbate-stock-market-volatility-2023-03-17/#:~:text=In%20a%20report%20published%20earlier,market%20drop)"
+      ],
+      "sources": [
+        "https://www.bis.org/publ/qtrpdf/r_qt2403x.htm",
+        "https://www.reuters.com/markets/europe/0dte-options-trading-could-exacerbate-stock-market-volatility-2023-03-17/"
+      ]
+    },
+    {
+      "id": "H5N1",
+      "name": "H5N1 - Zoonotic Spillover",
+      "score": 55,
+      "z": 0.0,
+      "tripwires_breached": [
+        "H5N1 causing large mammal outbreaks (cats, etc.) beyond birds",
+        "Multiple human cases across continents (but no sustained spread)"
+      ],
+      "indicators": {
+        "Human H5N1 cases in 2025 (global)": 26,
+        "Countries with mammal infections": 10
+      },
+      "evidence_bullets": [
+        "CDC reports H5 bird flu is pervasive in wild birds and even seen in U.S. dairy cattle, with **several human cases** in exposed workers [oai_citation:115‡cdc.gov](https://www.cdc.gov/bird-flu/situation-summary/index.html#:~:text=,bird%20flu%20activity%20in%20people)",
+        "WOAH/WHO update (mid-2025): additional human infections in Cambodia, China, Vietnam, Mexico, etc., but all with direct bird exposure (no confirmed human-to-human spread) [oai_citation:116‡woah.org](https://www.woah.org/app/uploads/2025/07/25728-fao-woah-who-h5-assessment.pdf#:~:text=Since%20the%20last%20joint%20assessment,direct%20or%20indirect%20exposure%20to). Some viral mutations (eg. PB2-E627K) found in mammals could indicate adaptation [oai_citation:117‡woah.org](https://www.woah.org/app/uploads/2025/07/25728-fao-woah-who-h5-assessment.pdf#:~:text=detected%20in%20wild%20birds%20nor,viruses%20detected%20in%20dairy%20cows)"
+      ],
+      "sources": [
+        "https://www.cdc.gov/bird-flu/situation-summary/index.html",
+        "https://www.woah.org/app/uploads/2025/07/25728-fao-woah-who-h5-assessment.pdf"
+      ]
+    },
+    {
+      "id": "CHINA_CREDIT",
+      "name": "China Property & Local Debt",
+      "score": 60,
+      "z": 0.0,
+      "tripwires_breached": [
+        "Evergrande default & developer bankruptcy wave (2021-2023)",
+        "IMF warns LGFV hidden debt ~¥58T is unsustainable"
+      ],
+      "indicators": {
+        "Developers defaulted since 2021": 50,
+        "Local gov't hidden debt (¥ trillion)": 58
+      },
+      "evidence_bullets": [
+        "Evergrande’s collapse in 2021-22 triggered a broader **real estate credit crisis** – over 50 Chinese developers have defaulted on debts since then [oai_citation:118‡yipinstitute.org](https://yipinstitute.org/policy/economic-implications-of-evergrande-collapse#:~:text=Evergrande%E2%80%99s%20default%20represents%20a%20turning,revenue%20as%20land%20sales%20decline), and property sales/home prices continue to decline in 2024-25.",
+        "IMF (FSAP 2025) flagged **¥58 trillion** in local government financing vehicle (LGFV) debt as “a serious risk to financial stability” [oai_citation:119‡atlanticcouncil.org](https://www.atlanticcouncil.org/blogs/econographics/sinographs/beijing-extends-and-pretends-to-deal-with-its-mountain-of-local-government-debt/#:~:text=The%20International%20Monetary%20Fund%20,on%20directly%20by%20local%20governments). Despite Beijing’s refinancing of ¥10T in 2024, most local debt remains and is straining provincial finances."
+      ],
+      "sources": [
+        "https://www.atlanticcouncil.org/blogs/econographics/sinographs/beijing-extends-and-pretends-to-deal-with-its-mountain-of-local-government-debt/",
+        "https://yipinstitute.org/policy/economic-implications-of-evergrande-collapse"
+      ]
+    }
+  ],
+  "events_update": [
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "US_CRE",
+        "event_type": "CRE credit crunch",
+        "primary_entities": [
+          "Brookfield",
+          "Office CMBS"
+        ],
+        "geography": [
+          "United States"
+        ],
+        "instruments": [
+          "CMBS",
+          "CRE loans"
+        ],
+        "mechanism": "default wave",
+        "canonical_source": "trepp.com"
+      },
+      "title": "Office Crash Triggers Record CRE Loan Defaults",
+      "phase": "elevated",
+      "score": 70.0,
+      "confidence": "high",
+      "indicators": {
+        "Office CMBS delinquency (%)": 11.66,
+        "Office occupancy (metro avg %)": 50
+      },
+      "tripwires": [
+        "Major landlords defaulting on office mortgages",
+        "CMBS delinquency >10% (breached)",
+        "Office valuations -40% from peak"
+      ],
+      "rationale": [
+        "Office property values have plunged due to remote work, pushing **office CMBS delinquency to 11.7%** (all-time high) [oai_citation:120‡trepp.com](https://www.trepp.com/trepptalk/cmbs-delinquency-rate-increases-again-in-august-2025#:~:text=Breaking%20it%20down%20by%20property,time%20high%20of%2011.66). Brookfield and other big owners have defaulted on trophy assets, illustrating the stress [oai_citation:121‡commercialobserver.com](https://commercialobserver.com/2025/08/brookfield-dmv-office-distress/#:~:text=A%20Brookfield%20investment%20fund%2C%20Brookfield,balance%20of%20about%20%24161%20million). This event is elevated as defaults are rising and credit markets are tightening for CRE, with knock-on risk to banks."
+      ],
+      "sources": [
+        "https://www.trepp.com/trepptalk/cmbs-delinquency-rate-increases-again-in-august-2025",
+        "https://commercialobserver.com/2025/08/brookfield-dmv-office-distress/"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "US_CRE",
+        "event_type": "Banking strain",
+        "primary_entities": [
+          "Regional banks"
+        ],
+        "geography": [
+          "United States"
+        ],
+        "instruments": [
+          "CRE loans"
+        ],
+        "mechanism": "refinancing crunch",
+        "canonical_source": "scotsmanguide.com"
+      },
+      "title": "Regional Banks Face CRE Maturity Wall",
+      "phase": "watch",
+      "score": 60.0,
+      "confidence": "high",
+      "indicators": {
+        "CRE debt maturing by 2025 ($)": 2000000000000,
+        "Regional bank CRE loan share (%)": 67
+      },
+      "tripwires": [
+        "CRE loan delinquencies rising at multiple regional banks",
+        ">$100B in CRE loans extended or restructured"
+      ],
+      "rationale": [
+        "About $2 trillion in commercial real estate debt comes due by end-2025, and **regional/small banks hold ~70%** of those loans [oai_citation:122‡scotsmanguide.com](https://www.scotsmanguide.com/commercial/more-pain-to-come-for-regional-banks/#:~:text=Here%20is%20one%20more%20statistic%3A,existential%20threat%20for%20some%20landlords). As interest rates have jumped, many borrowers will struggle to refinance. Banks have started increasing loan-loss reserves. Officials (e.g. Yellen) foresee stress at smaller banks from CRE, though they expect it to be contained [oai_citation:123‡reuters.com](https://www.reuters.com/business/yellen-concerned-about-us-commercial-real-estate-says-stresses-manageable-2024-02-06/#:~:text=Yellen%20told%20a%20House%20Financial,the%20owners%20of%20these%20properties). We keep this at watch: credit is tightening, but an outright banking crisis hasn’t materialized beyond isolated cases."
+      ],
+      "sources": [
+        "https://www.scotsmanguide.com/commercial/more-pain-to-come-for-regional-banks/",
+        "https://www.reuters.com/business/yellen-concerned-about-us-commercial-real-estate-says-stresses-manageable-2024-02-06/"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "EURO_SOV",
+        "event_type": "sovereign fiscal stress",
+        "primary_entities": [
+          "France",
+          "Italy"
+        ],
+        "geography": [
+          "France",
+          "Italy"
+        ],
+        "instruments": [
+          "Govt bonds"
+        ],
+        "mechanism": "debt sustainability",
+        "canonical_source": "reuters.com"
+      },
+      "title": "France Downgrade as Yields Converge with Italy",
+      "phase": "watch",
+      "score": 55.0,
+      "confidence": "high",
+      "indicators": {
+        "France deficit (2023 %GDP)": 4.9,
+        "Italy deficit (2023 %GDP)": 7.4
+      },
+      "tripwires": [
+        "France political crisis over budget (breached Sept 2025)",
+        "Italy return to 4%+ yields"
+      ],
+      "rationale": [
+        "For the first time, France is trading at par with Italy in borrowing costs [oai_citation:124‡reuters.com](https://www.reuters.com/markets/europe/why-france-italys-10-year-borrowing-costs-match-first-time-2025-09-18/#:~:text=Italian%20and%20French%2010,according%20to%20LSEG%20data). This reflects France’s fiscal credibility deteriorating – high deficits and political gridlock led Fitch to cut France’s rating [oai_citation:125‡reuters.com](https://www.reuters.com/markets/europe/why-france-italys-10-year-borrowing-costs-match-first-time-2025-09-18/#:~:text=Fitch%20ratings%20cut%20France%27s%20rating,in%20less%20than%20two%20years). Meanwhile, Italy’s near-term risk eased as it maintained fiscal targets (and even got a rating outlook boost). The event is in watch phase: markets are alert but not panicked; a lot rides on France passing credible budget reforms and Italy sustaining progress."
+      ],
+      "sources": [
+        "https://www.reuters.com/markets/europe/why-france-italys-10-year-borrowing-costs-match-first-time-2025-09-18/",
+        "https://www.consilium.europa.eu/en/press/press-releases/2024/07/26/stability-and-growth-pact-council-launches-excessive-deficit-procedures-against-seven-member-states/"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "AI_POWER",
+        "event_type": "infrastructure risk",
+        "primary_entities": [
+          "NERC",
+          "Data centers"
+        ],
+        "geography": [
+          "North America"
+        ],
+        "instruments": [
+          "Electricity"
+        ],
+        "mechanism": "capacity shortfall",
+        "canonical_source": "nerc.com"
+      },
+      "title": "AI Data Center Boom Tests Grid Limits",
+      "phase": "elevated",
+      "score": 60.0,
+      "confidence": "high",
+      "indicators": {
+        "New large data centers since 2022": 100,
+        "Grid emergency alerts (2025)": 5
+      },
+      "tripwires": [
+        "Emergency grid alerts due to data center load (observed in 2025)",
+        "Delayed or canceled data center projects for lack of power"
+      ],
+      "rationale": [
+        "Grid regulators are explicitly warning that the rapid proliferation of energy-hungry AI data centers is outpacing the electric supply build-out [oai_citation:126‡news.bgov.com](https://news.bgov.com/tech-and-telecom-law/data-centers-pose-threat-to-electric-grids-says-us-regulator?context=search&index=0#:~:text=Big%20data%20centers%20connecting%20to,charged%20with%20overseeing%20the%20sector). NERC’s 2025 report calls it a major near-term reliability challenge [oai_citation:127‡electric.coop](https://www.electric.coop/rapid-data-center-development-challenges-grid-reliability-nerc-report-says#:~:text=Huge%2C%20electricity,North%20American%20Electric%20Reliability%20Corp). This event is elevated: we have concrete evidence of strain (e.g. tighter reserve margins, localized load curtailments). However, no widespread blackouts have been attributed to AI loads yet, keeping it below critical."
+      ],
+      "sources": [
+        "https://www.nerc.com/pa/RAPA/ra/Reliability%20Assessments/NERC_SOR_2025.pdf",
+        "https://news.bgov.com/tech-and-telecom-law/data-centers-pose-threat-to-electric-grids-says-us-regulator"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "SHIPPING",
+        "event_type": "trade slowdown",
+        "primary_entities": [
+          "UNCTAD"
+        ],
+        "geography": [
+          "Global"
+        ],
+        "instruments": [
+          "Freight index"
+        ],
+        "mechanism": "demand drop",
+        "canonical_source": "unctad.org"
+      },
+      "title": "Global Freight Indices Slump on Weak Demand",
+      "phase": "watch",
+      "score": 50.0,
+      "confidence": "high",
+      "indicators": {
+        "Q1 2025 goods trade volume growth": 1,
+        "Baltic Dry Index YoY (%)": -20
+      },
+      "tripwires": [
+        "Container rates falling to 2020 lows (partially seen early 2025)",
+        "Idle container ship fleet > 15%"
+      ],
+      "rationale": [
+        "Through early 2025, multiple freight benchmarks (container and bulk) fell significantly [oai_citation:128‡unctad.org](https://unctad.org/publication/global-trade-update-march-2025#:~:text=,dependent%20sectors), mirroring a manufacturing slowdown. This raised recessionary flags. Mid-year data showed some stabilization [oai_citation:129‡unctad.org](https://unctad.org/news/global-trade-grew-300-billion-first-half-2025-led-us-imports-and-eu-exports#:~:text=Still%2C%20signs%20of%20resilience%20remain,may%20continue%20its%20robust%20growth). We keep this event at watch: global trade hasn’t collapsed, but if freight rates slide further or stay depressed, it may signal broader economic stress."
+      ],
+      "sources": [
+        "https://unctad.org/publication/global-trade-update-march-2025",
+        "https://unctad.org/news/global-trade-grew-300-billion-first-half-2025-led-us-imports-and-eu-exports"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "SHIPPING",
+        "event_type": "climate disruption",
+        "primary_entities": [
+          "Panama Canal Authority"
+        ],
+        "geography": [
+          "Panama"
+        ],
+        "instruments": [
+          "Shipping lane"
+        ],
+        "mechanism": "drought",
+        "canonical_source": "supplychains.com"
+      },
+      "title": "Panama Canal Drought Restricts Shipping Traffic",
+      "phase": "elevated",
+      "score": 60.0,
+      "confidence": "high",
+      "indicators": {
+        "Canal daily transits (max)": 32,
+        "Gatun Lake level deviation (%)": -30
+      },
+      "tripwires": [
+        "Transit backlog >100 ships (as in 2023, and again mid-2025)",
+        "Extended periods of draft <44 ft imposed (breached in 2023 & 2025)"
+      ],
+      "rationale": [
+        "The Panama Canal has been forced to impose draft and transit limits due to insufficient rainfall [oai_citation:130‡supplychains.com](https://supplychains.com/navigating-drought-panama-canal-imposes-restrictions-on-large-ships/#:~:text=The%20Depth%20Dilemma). In mid-2025, ships over 13.3m draft could not pass, and daily slot quotas were reduced. This event is elevated because it directly disrupts global supply chains (some shippers have had to reroute or load less cargo). With climate volatility, the canal’s reliability is in question, making this a recurring systemic risk."
+      ],
+      "sources": [
+        "https://supplychains.com/navigating-drought-panama-canal-imposes-restrictions-on-large-ships/",
+        "https://lloydslist.maritimeintelligence.informa.com/"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "ODTE",
+        "event_type": "market tail-risk",
+        "primary_entities": [
+          "S&P 500"
+        ],
+        "geography": [
+          "United States"
+        ],
+        "instruments": [
+          "Equity options"
+        ],
+        "mechanism": "short gamma squeeze",
+        "canonical_source": "reuters.com"
+      },
+      "title": "0DTE Options Boom Amplifies Crash Risk Fears",
+      "phase": "watch",
+      "score": 50.0,
+      "confidence": "medium",
+      "indicators": {
+        "0DTE share of SPX volume (%)": 55,
+        "Max intraday SPX drawdown 2023-25 (%)": 5
+      },
+      "tripwires": [
+        "Large intraday SPX swing (>5%) coinciding with 0DTE volume surge",
+        "Market liquidity drying up on non-event day"
+      ],
+      "rationale": [
+        "Zero-day options trading has soared, and while it hasn’t caused a known incident, experts continue to caution that these derivatives could **exacerbate a sudden sell-off** [oai_citation:131‡reuters.com](https://www.reuters.com/markets/europe/0dte-options-trading-could-exacerbate-stock-market-volatility-2023-03-17/#:~:text=In%20a%20report%20published%20earlier,market%20drop). The event remains in watch: volumes are high and growing [oai_citation:132‡bis.org](https://www.bis.org/publ/qtrpdf/r_qt2403x.htm?ref=investo.global#:~:text=relatively%20cheap%20and%20provide%20a,but%20on%20rare%20occasions%20generates), but markets have been orderly so far. Any flash-crash-like event would move this to critical instantly."
+      ],
+      "sources": [
+        "https://www.reuters.com/markets/europe/0dte-options-trading-could-exacerbate-stock-market-volatility-2023-03-17/",
+        "https://www.bis.org/publ/qtrpdf/r_qt2403.htm"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "H5N1",
+        "event_type": "zoonosis",
+        "primary_entities": [
+          "H5N1 clade 2.3.4.4b"
+        ],
+        "geography": [
+          "Global"
+        ],
+        "instruments": [
+          "WHO risk assessment"
+        ],
+        "mechanism": "viral mutation",
+        "canonical_source": "who.int"
+      },
+      "title": "H5N1 Bird Flu Spreads in Mammals, Sporadic Human Cases",
+      "phase": "watch",
+      "score": 55.0,
+      "confidence": "high",
+      "indicators": {
+        "Countries with human cases 2023-25": 10,
+        "Clade 2.3.4.4b mammal cases": 100
+      },
+      "tripwires": [
+        "Evidence of limited human-to-human transmission",
+        "Significant H5N1 genome change (e.g. human receptor binding adaptation)"
+      ],
+      "rationale": [
+        "The H5N1 avian flu epizootic remains widespread, and the virus is infecting an unprecedented range of mammals (e.g. US cat infections across 19 states in 2025) [oai_citation:133‡woah.org](https://www.woah.org/app/uploads/2025/07/25728-fao-woah-who-h5-assessment.pdf#:~:text=the%20continued%20transmission%20of%20A,in%20other%20mammals%20continued%20to). Human infections have occurred (two dozen+ cases in 2023-2025 globally), but all linked to poultry exposure and no sustained human spread [oai_citation:134‡woah.org](https://www.woah.org/app/uploads/2025/07/25728-fao-woah-who-h5-assessment.pdf#:~:text=Since%20the%20last%20joint%20assessment,direct%20or%20indirect%20exposure%20to). This event is in watch phase: the risk to humans could change rapidly if the virus adapts, but for now it’s mainly a veterinary issue with pandemic potential. Authorities are on high alert – any cluster of unexplained human cases would escalate this risk immediately."
+      ],
+      "sources": [
+        "https://www.who.int/emergencies/disease-outbreak-news",
+        "https://www.cdc.gov/bird-flu/situation-summary/"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "CHINA_CREDIT",
+        "event_type": "property bust",
+        "primary_entities": [
+          "Evergrande",
+          "Country Garden"
+        ],
+        "geography": [
+          "China"
+        ],
+        "instruments": [
+          "Offshore USD bonds"
+        ],
+        "mechanism": "insolvency",
+        "canonical_source": "atlanticcouncil.org"
+      },
+      "title": "China Property Crisis Deepens with Developer Defaults",
+      "phase": "elevated",
+      "score": 65.0,
+      "confidence": "high",
+      "indicators": {
+        "New home sales 2024 (YoY%)": -14,
+        "Developers in default since 2021": 50
+      },
+      "tripwires": [
+        "Major developer liquidation (Evergrande ordered to wind up – *breached*)",
+        "Property investment -20% YoY sustained"
+      ],
+      "rationale": [
+        "China’s once-booming real estate sector remains in a severe downturn. Evergrande’s default and pending liquidation was just the first domino – **over 50 developers have defaulted** on debt since 2021 [oai_citation:135‡yipinstitute.org](https://yipinstitute.org/policy/economic-implications-of-evergrande-collapse#:~:text=Evergrande%E2%80%99s%20default%20represents%20a%20turning,revenue%20as%20land%20sales%20decline). Home sales and prices continue to fall (2024 new home sales -14% YoY [oai_citation:136‡globalpropertyguide.com](https://www.globalpropertyguide.com/asia/china/price-history#:~:text=China%27s%20Residential%20Property%20Market%20Analysis,year%2C%20compared%20to%20sharper)), undermining local government revenues and consumer confidence. This event is elevated: the property slump is ongoing and posing credit risks, but it hasn’t yet precipitated a broader financial crisis (thanks in part to government control and gradual workout efforts)."
+      ],
+      "sources": [
+        "https://yipinstitute.org/policy/economic-implications-of-evergrande-collapse",
+        "https://www.scmp.com/business/china-business/article/3231779/chinas-property-slump-may-be-bottoming-analysts-point-signs-recovery-fitch-says-risks-remain"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "CHINA_CREDIT",
+        "event_type": "local debt crisis",
+        "primary_entities": [
+          "Local Governments",
+          "LGFVs"
+        ],
+        "geography": [
+          "China"
+        ],
+        "instruments": [
+          "LGFV bonds"
+        ],
+        "mechanism": "debt overhang",
+        "canonical_source": "imf.org"
+      },
+      "title": "China’s Hidden Local Debt Threatens Financial Stability",
+      "phase": "elevated",
+      "score": 60.0,
+      "confidence": "high",
+      "indicators": {
+        "Est. LGFV debt (¥ trillion)": 58,
+        "LGFV interest coverage": "<1x"
+      },
+      "tripwires": [
+        "Local government defaults or bailouts (e.g. a LGFV bond default beyond grace period)",
+        "Central gov’t announces rescue fund for provincial debts"
+      ],
+      "rationale": [
+        "China’s local governments face a **debt time bomb** after years of off-budget borrowing. An IMF assessment in 2025 warned that ~¥58 trillion in local government financing vehicle debt is *“a serious risk to financial stability”* [oai_citation:137‡atlanticcouncil.org](https://www.atlanticcouncil.org/blogs/econographics/sinographs/beijing-extends-and-pretends-to-deal-with-its-mountain-of-local-government-debt/#:~:text=The%20International%20Monetary%20Fund%20,on%20directly%20by%20local%20governments). Many provinces are rolling over loans and cutting spending to avoid default. Beijing has so far opted to “extend and pretend” (refinancing a portion of hidden debt) [oai_citation:138‡atlanticcouncil.org](https://www.atlanticcouncil.org/blogs/econographics/sinographs/beijing-extends-and-pretends-to-deal-with-its-mountain-of-local-government-debt/#:~:text=because%20the%20Chinese%20government%20already,other%20obligations%20that%20remain%20unaddressed). This event is elevated: the strain is evident and could culminate in either a financial crisis or a large central government intervention. However, given China’s closed financial system, we have not yet seen an acute trigger moment – it’s a growing pressure that warrants close monitoring."
+      ],
+      "sources": [
+        "https://www.imf.org/en/Publications/CR/Issues/2025/04/30/Peoples-Republic-of-China-Financial-System-Assessment-Program-Financial-System-Stability-566570",
+        "https://www.atlanticcouncil.org/blogs/econographics/sinographs/beijing-extends-and-pretends-to-deal-with-its-mountain-of-local-government-debt/"
+      ]
+    }
+  ],
+  "post": {
+    "slug": "2025-09-22-brief",
+    "title": "Daily Risk Brief — 2025-09-22",
+    "format": "html",
+    "content": "Top MoversItemWhat ChangedPointWatch NextTripwire"
+  }
+}

@@ -1,0 +1,58 @@
+name: Redeploy static site (no ingest)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "index.html"
+      - "assets/**"
+      - "posts/**"
+      - "data/*.json"
+      - ".github/workflows/pages-redeploy.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages-deploy"
+  cancel-in-progress: false
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Determine site output directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -d "dist" ]]; then OUT="dist"
+          elif [[ -d "public" ]]; then OUT="public"
+          elif [[ -d "build" ]]; then OUT="build"
+          else OUT="."
+          fi
+          echo "Using output directory: $OUT"
+          echo "SITE_DIR=$OUT" >> "$GITHUB_ENV"
+
+      - name: Show site_dir contents
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "SITE_DIR=${SITE_DIR:-.}"
+          find "${SITE_DIR:-.}" -maxdepth 2 -type f -printf '%P\n' | sort | sed -n '1,200p'
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.SITE_DIR }}
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

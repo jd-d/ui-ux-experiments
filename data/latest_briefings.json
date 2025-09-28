@@ -1,0 +1,19 @@
+{
+  "as_of": "2025-09-26",
+  "items": [
+    {
+      "event_uid": "euro_sov__thailand_negative_outlook__2025-09-26",
+      "slug": "thailand_negative_outlook",
+      "title": "Thailand’s Credit Outlook Cut to Negative",
+      "cluster": "EURO_SOV",
+      "as_of": "2025-09-26"
+    },
+    {
+      "event_uid": "shipping__typhoon_ragasa_trade_grid_shock__2025-09-26",
+      "slug": "typhoon_ragasa_disrupts_ports_power",
+      "title": "Typhoon Ragasa Disrupts Ports and Power Grids",
+      "cluster": "SHIPPING",
+      "as_of": "2025-09-26"
+    }
+  ]
+}

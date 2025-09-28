@@ -1,0 +1,105 @@
+{
+  "as_of": "2025-09-25",
+  "methodology_note": "48h scan, cap 3 triggers",
+  "clusters": [
+    { "id": "EURO_SOV", "score": null, "source": null },
+    { "id": "SHIPPING", "score": null, "source": null },
+    { "id": "US_CRE", "score": null, "source": null },
+    { "id": "AI_POWER", "score": null, "source": null },
+    { "id": "ODTE", "score": null, "source": null },
+    { "id": "H5N1", "score": null, "source": null }
+  ],
+  "events_update": [
+    {
+      "uid": "euro_sov__thailand_negative_outlook__2025-09-25",
+      "r1_index": 0,
+      "fingerprint_fields": {
+        "cluster": "EURO_SOV",
+        "event_type": "sovereign_outlook_change",
+        "primary_entities": ["thailand","fitch"],
+        "geography": ["thailand","asean"],
+        "instruments": ["sovereign_bonds"],
+        "mechanism": "sovereign_risk_elevation",
+        "canonical_source": "fitchratings.com"
+      },
+      "title": "Thailand Placed on ‘‘Negative’’ Outlook",
+      "phase": "watch",
+      "score": 62,
+      "confidence": "medium",
+      "indicators": {
+        "outlook_changed": 1,
+        "yield_spike": 1
+      },
+      "tripwires": ["actual downgrade","regional contagion","capital outflows"],
+      "rationale": [
+        "Fitch’s negative outlook signals growing sovereign stress amid fiscal and political uncertainty",
+        "Public reaction and policy pledges raise stakes for next steps"
+      ],
+      "sources": [
+        "https://www.fitchratings.com/research/sovereigns/fitch-revises-thailand-outlook-to-negative-affirms-at-bbb-24-09-2025",
+        "https://www.reuters.com/world/asia-pacific/thai-finance-minister-says-country-must-heed-fitch-warning-2025-09-25/"
+      ],
+      "brief": {
+        "slug": "thailand_negative_outlook",
+        "title": "Thailand Placed on ‘‘Negative’’ Outlook",
+        "format": "html",
+        "content": "<h2>What changed</h2><p>Fitch revised Thailand’s long‑term credit outlook from \"stable\"to \"negative\", while keeping the rating at BBB+, citing mounting fiscal and political pressure.</p><h3>Why it matters</h3><ul><li>The reevaluation raises the risk of a full downgrade and bond yield stress.</li><li>Investor sentiment in ASEAN sovereigns could shift sharply.</li></ul><h3>Watch next</h3><ul><li>Further rating actions or yield jumps in neighboring sovereigns</li><li>Signs of capital flight from regional credit markets</li></ul><small>Sources: Fitch Ratings; Reuters</small>"
+      }
+    },
+    {
+      "uid": "shipping__typhoon_ragasa_landfall__2025-09-25",
+      "r1_index": 1,
+      "fingerprint_fields": {
+        "cluster": "SHIPPING",
+        "event_type": "typhoon_disruption",
+        "primary_entities": ["typhoon_ragasa"],
+        "geography": ["china_south","vietnam"],
+        "instruments": ["port_operations","electricity"],
+        "mechanism": "natural_shock_supply_chains",
+        "canonical_source": "wikipedia.org"
+      },
+      "title": "Typhoon Ragasa Triggers Port & Power Disruptions",
+      "phase": "elevated",
+      "score": 68,
+      "confidence": "medium",
+      "tripwires": ["extended port closure","export contract defaults"],
+      "rationale": [
+        "Landfalls and outages are already documented in southern China and Vietnam",
+        "Logistics and power chains are under immediate stress in key coastal hubs"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Typhoon_Ragasa"
+      ],
+      "brief": {
+        "slug": "typhoon_ragasa_disruption",
+        "title": "Typhoon Ragasa Triggers Port & Power Disruptions",
+        "format": "html",
+        "content": "<h2>What changed</h2><p>Super Typhoon Ragasa made landfall across Guangdong, Guangxi, and later Vietnam, causing power outages to 56,000+ households and triggering mass evacuations.</p><h3>Impacts & channels</h3><ul><li>Port closures and shipping delays are confirmed in Guangdong coastal hubs.</li><li>Energy disruption adds stress to industrial and logistics sectors.</li></ul><h3>Watch next</h3><ul><li>Persistent closures at major ports</li><li>Supply chain contract defaults or reroutes</li><li>Freight rate surges on Asia‑Europe/U.S. routes</li></ul><small>Source: Wikipedia / meteorological summaries</small>"
+      }
+    }
+  ],
+  "briefings": [
+    {
+      "event_uid": "euro_sov__thailand_negative_outlook__2025-09-25",
+      "slug": "thailand_negative_outlook",
+      "title": "Thailand Placed on ‘‘Negative’’ Outlook",
+      "cluster": "EURO_SOV",
+      "format": "html",
+      "content": "<h2>What changed</h2><p>Fitch revised Thailand’s long‑term credit outlook from \"stable\" to \"negative\", while keeping the rating at BBB+, citing mounting fiscal and political pressure.</p><h3>Why it matters</h3><ul><li>The reevaluation raises the risk of a full downgrade and bond yield stress.</li><li>Investor sentiment in ASEAN sovereigns could shift sharply.</li></ul><h3>Watch next</h3><ul><li>Further rating actions or yield jumps in neighboring sovereigns</li><li>Signs of capital flight from regional credit markets</li></ul><small>Sources: Fitch Ratings; Reuters</small>"
+    },
+    {
+      "event_uid": "shipping__typhoon_ragasa_landfall__2025-09-25",
+      "slug": "typhoon_ragasa_disruption",
+      "title": "Typhoon Ragasa Triggers Port & Power Disruptions",
+      "cluster": "SHIPPING",
+      "format": "html",
+      "content": "<h2>What changed</h2><p>Super Typhoon Ragasa made landfall across Guangdong, Guangxi, and later Vietnam, causing power outages to 56,000+ households and triggering mass evacuations.</p><h3>Impacts & channels</h3><ul><li>Port closures and shipping delays are confirmed in Guangdong coastal hubs.</li><li>Energy disruption adds stress to industrial and logistics sectors.</li></ul><h3>Watch next</h3><ul><li>Persistent closures at major ports</li><li>Supply chain contract defaults or reroutes</li><li>Freight rate surges on Asia‑Europe/U.S. routes</li></ul><small>Source: Wikipedia / meteorological summaries</small>"
+    }
+  ],
+  "post": {
+    "slug": "2025-09-25-brief",
+    "title": "Daily Trigger Monitor -- 2025‑09‑25",
+    "format": "html",
+    "content": "<h2>Top signals</h2><p>Today’s scan surfaced two fresh structural stresses: elevated sovereign risk in Thailand and typhoon‑driven disruptions along key southern China / ASEAN trade and energy corridors.</p>"
+  }
+}

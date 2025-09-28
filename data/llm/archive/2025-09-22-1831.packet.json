@@ -1,0 +1,453 @@
+{
+  "as_of": "2025-09-22",
+  "methodology_note": "Cycle-aware, conservative scoring; baseline 50 with decay for staleness.",
+  "clusters": [
+    {
+      "id": "US_CRE",
+      "name": "US Commercial Real Estate",
+      "score": 66,
+      "z": 1.5,
+      "tripwires_breached": [],
+      "indicators": {},
+      "evidence_bullets": [
+        "CMBS delinquency and special servicing remain elevated, led by office.",
+        "Bank credit metrics show persistent CRE stress in supervisory data."
+      ],
+      "sources": [
+        "https://www.trepp.com/trepptalk",
+        "https://www.fdic.gov/analysis/quarterly-banking-profile/"
+      ]
+    },
+    {
+      "id": "EURO_SOV",
+      "name": "Eurozone Sovereign Risk",
+      "score": 58,
+      "z": 0.8,
+      "tripwires_breached": [],
+      "indicators": {},
+      "evidence_bullets": [
+        "Fiscal consolidation pressures and ratings scrutiny in high-debt members.",
+        "Spread sensitivity to policy communications remains elevated."
+      ],
+      "sources": [
+        "https://www.ecb.europa.eu/pub/fsr/html/index.en.html",
+        "https://www.reuters.com/markets/europe/"
+      ]
+    },
+    {
+      "id": "AI_POWER",
+      "name": "AI - Power & Grid Stress",
+      "score": 62,
+      "z": 1.2,
+      "tripwires_breached": [],
+      "indicators": {},
+      "evidence_bullets": [
+        "Data-center electricity demand growth flagged by major agencies.",
+        "Grid operators cite interconnection and equipment constraints."
+      ],
+      "sources": [
+        "https://www.iea.org/energy-system/electricity/data-centres-and-data-transmission-networks",
+        "https://www.nerc.com/pa/RAPA/ra/Pages/default.aspx",
+        "https://www.energy.gov/ceser/transformer-supply-chain"
+      ]
+    },
+    {
+      "id": "SHIPPING",
+      "name": "Global Shipping & Freight",
+      "score": 54,
+      "z": 0.4,
+      "tripwires_breached": [],
+      "indicators": {},
+      "evidence_bullets": [
+        "Red Sea routing disruptions and insurance premia persist.",
+        "Container rates adjusting from prior spikes; volatility remains."
+      ],
+      "sources": [
+        "https://unctad.org/publication/navigating-troubled-waters-impact-global-trade-disruption-shipping-routes-red-sea-black",
+        "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry"
+      ]
+    },
+    {
+      "id": "ODTE",
+      "name": "0DTE Options & Dealer Positioning",
+      "score": 55,
+      "z": 0.5,
+      "tripwires_breached": [],
+      "indicators": {},
+      "evidence_bullets": [
+        "Same-day options remain a large share of index option flow.",
+        "Microstructure studies highlight potential feedback dynamics."
+      ],
+      "sources": [
+        "https://www.cboe.com/insights/posts/",
+        "https://www.bis.org/publ/qtrpdf/r_qt2403.pdf"
+      ]
+    },
+    {
+      "id": "H5N1",
+      "name": "H5N1 - Zoonotic Spillover",
+      "score": 53,
+      "z": 0.3,
+      "tripwires_breached": [],
+      "indicators": {},
+      "evidence_bullets": [
+        "Dairy herd detections continue under monitoring.",
+        "CDC assesses low risk to the general public; surveillance ongoing."
+      ],
+      "sources": [
+        "https://www.aphis.usda.gov/livestock-poultry-disease/avian/avian-influenza",
+        "https://www.cdc.gov/bird-flu/situation-summary/index.html",
+        "https://www.who.int/emergencies/disease-outbreak-news"
+      ]
+    }
+  ],
+  "events_update": [
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "US_CRE",
+        "event_type": "CMBS_delinquency",
+        "primary_entities": ["US Office CMBS"],
+        "geography": ["US"],
+        "instruments": ["CMBS"],
+        "mechanism": "Refinancing stress and NOI erosion in office-heavy pools",
+        "canonical_source": "https://www.trepp.com/trepptalk"
+      },
+      "title": "Office-led CMBS delinquency pressure persists",
+      "phase": "elevated",
+      "score": 65,
+      "confidence": "medium",
+      "indicators": {
+        "office_cmbs_trend": "rising"
+      },
+      "tripwires": [
+        "Office CMBS delinquency > 12% for 2 consecutive months",
+        "Overall CMBS delinquency > 8% with weak issuance"
+      ],
+      "rationale": [
+        "Delinquencies and special servicing remain elevated for office collateral.",
+        "Refinance at higher rates with lower valuations drives stress."
+      ],
+      "sources": [
+        "https://www.trepp.com/trepptalk",
+        "https://www.trepp.com/trepptalk/topic/special-servicing"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "US_CRE",
+        "event_type": "Bank_Credit_Quality",
+        "primary_entities": ["US Banks"],
+        "geography": ["US"],
+        "instruments": ["CRE Loans"],
+        "mechanism": "Bank problem loans and charge-offs rise in CRE segments",
+        "canonical_source": "https://www.fdic.gov/analysis/quarterly-banking-profile/"
+      },
+      "title": "Bank CRE problem metrics elevated",
+      "phase": "watch",
+      "score": 59,
+      "confidence": "medium",
+      "indicators": {
+        "cre_pdna_trend": "elevated"
+      },
+      "tripwires": [
+        "Non-owner-occupied CRE PDNA > 5% at large banks",
+        "CRE net charge-offs > post-GFC average for 2 quarters"
+      ],
+      "rationale": [
+        "Supervisory aggregates show persistent CRE stress at banks.",
+        "Transmission channel into lending standards remains open."
+      ],
+      "sources": [
+        "https://www.fdic.gov/analysis/quarterly-banking-profile/",
+        "https://www.federalreserve.gov/data/sloos.htm"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "EURO_SOV",
+        "event_type": "Sovereign_spread",
+        "primary_entities": ["Italy"],
+        "geography": ["IT", "EU"],
+        "instruments": ["BTP", "Bund", "10Y"],
+        "mechanism": "Fiscal slippage risk widens spreads under tighter financing",
+        "canonical_source": "https://www.reuters.com/markets/europe/"
+      },
+      "title": "Italy BTP–Bund spread on watch",
+      "phase": "watch",
+      "score": 60,
+      "confidence": "medium",
+      "indicators": {
+        "btp_bund_spread_bps": 0
+      },
+      "tripwires": [
+        "BTP–Bund > 225 bps for 10 consecutive sessions",
+        "Failed auction or sudden spread gap > 30 bps intraday"
+      ],
+      "rationale": [
+        "High-debt member sensitivity to deficit path and growth assumptions.",
+        "Market depth thinner around data and policy headlines."
+      ],
+      "sources": [
+        "https://www.ecb.europa.eu/pub/fsr/html/index.en.html",
+        "https://www.reuters.com/markets/europe/"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "EURO_SOV",
+        "event_type": "Rating_outlook",
+        "primary_entities": ["France"],
+        "geography": ["FR", "EU"],
+        "instruments": ["OAT", "Bund", "10Y"],
+        "mechanism": "Ratings pressure amid fiscal slippage and politics",
+        "canonical_source": "https://www.ft.com"
+      },
+      "title": "France OAT–Bund spread sensitive to rating and budget news",
+      "phase": "watch",
+      "score": 57,
+      "confidence": "low",
+      "indicators": {
+        "oat_bund_spread_bps": 0
+      },
+      "tripwires": [
+        "Negative outlook revision and widening > 25 bps in a week",
+        "Auction tail > 5 bps with weak bid-to-cover"
+      ],
+      "rationale": [
+        "Budget path and growth assumptions in focus for rating agencies.",
+        "Spreads react to confidence votes and guidance changes."
+      ],
+      "sources": [
+        "https://www.ft.com",
+        "https://www.reuters.com/markets/europe/"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "AI_POWER",
+        "event_type": "Load_growth",
+        "primary_entities": ["Data centers"],
+        "geography": ["US"],
+        "instruments": ["Power capacity"],
+        "mechanism": "AI-driven electricity demand strains interconnection queues",
+        "canonical_source": "https://www.nerc.com"
+      },
+      "title": "Data-center load growth strains US grids",
+      "phase": "elevated",
+      "score": 63,
+      "confidence": "medium",
+      "indicators": {
+        "interconnection_queue_delay": "rising"
+      },
+      "tripwires": [
+        "Emergency curtailment/priority policies for large loads",
+        "Capacity auction prices breach prior cycle highs"
+      ],
+      "rationale": [
+        "NERC highlights reliability risks from rapid load growth hubs.",
+        "Queue delays and siting friction slow supply response."
+      ],
+      "sources": [
+        "https://www.nerc.com/pa/RAPA/ra/Pages/default.aspx",
+        "https://www.iea.org/energy-system/electricity/data-centres-and-data-transmission-networks"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "AI_POWER",
+        "event_type": "Equipment_constraints",
+        "primary_entities": ["Transformers"],
+        "geography": ["US"],
+        "instruments": ["Transmission", "Distribution"],
+        "mechanism": "Transformer shortages delay new capacity and upgrades",
+        "canonical_source": "https://www.energy.gov/ceser/transformer-supply-chain"
+      },
+      "title": "Transformer supply constraints hamper buildout",
+      "phase": "watch",
+      "score": 56,
+      "confidence": "medium",
+      "indicators": {
+        "lead_times_months": "long"
+      },
+      "tripwires": [
+        "Lead times > 24 months across major ISO territories",
+        "Widespread deferrals of data-center energization"
+      ],
+      "rationale": [
+        "DOE points to tight transformer supply chain conditions.",
+        "Delayed interconnections slow AI capacity ramps."
+      ],
+      "sources": [
+        "https://www.energy.gov/ceser/transformer-supply-chain",
+        "https://www.nerc.com/pa/RAPA/ra/Pages/default.aspx"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "SHIPPING",
+        "event_type": "Chokepoint_disruption",
+        "primary_entities": ["Red Sea"],
+        "geography": ["ME", "EU"],
+        "instruments": ["Container", "Tanker"],
+        "mechanism": "Security risks force rerouting, raising costs and transit times",
+        "canonical_source": "https://unctad.org"
+      },
+      "title": "Red Sea routing risk persists",
+      "phase": "watch",
+      "score": 55,
+      "confidence": "medium",
+      "indicators": {
+        "reroute_share": "elevated"
+      },
+      "tripwires": [
+        "Sustained surge in reroutes > 50% of normal transits",
+        "Insurance premia jump and carrier advisories escalate"
+      ],
+      "rationale": [
+        "UNCTAD tracks persistent rerouting and schedule disruption.",
+        "War risk premia and detours increase costs."
+      ],
+      "sources": [
+        "https://unctad.org/publication/navigating-troubled-waters-impact-global-trade-disruption-shipping-routes-red-sea-black",
+        "https://www.businessinsurance.com/"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "SHIPPING",
+        "event_type": "Freight_rates",
+        "primary_entities": ["Global containers"],
+        "geography": ["Global"],
+        "instruments": ["FEU rates"],
+        "mechanism": "Rates volatile as capacity rebalances and demand shifts",
+        "canonical_source": "https://www.drewry.co.uk"
+      },
+      "title": "Container rates volatile off prior peaks",
+      "phase": "watch",
+      "score": 52,
+      "confidence": "medium",
+      "indicators": {
+        "wci_level": "volatile"
+      },
+      "tripwires": [
+        "> 25% weekly surge across Asia–EU and Transpac lanes",
+        "Blank sailings spike and schedule reliability drops sharply"
+      ],
+      "rationale": [
+        "Benchmark indices show rate volatility as networks adjust.",
+        "Carrier capacity tactics drive short-term swings."
+      ],
+      "sources": [
+        "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
+        "https://www.spglobal.com/commodity-insights/"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "ODTE",
+        "event_type": "Microstructure_flow",
+        "primary_entities": ["SPX options"],
+        "geography": ["US"],
+        "instruments": ["0DTE"],
+        "mechanism": "High same-day options activity can amplify intraday moves",
+        "canonical_source": "https://www.cboe.com/insights/posts/"
+      },
+      "title": "0DTE activity remains elevated in index options",
+      "phase": "watch",
+      "score": 56,
+      "confidence": "medium",
+      "indicators": {
+        "0dte_share": "high"
+      },
+      "tripwires": [
+        "0DTE share > 50% on CPI/FOMC day with realized vol > 2σ",
+        "Dealer gamma flips negative into large expiry"
+      ],
+      "rationale": [
+        "Exchange data and studies flag growth of same-day options.",
+        "Potential feedback loops around macro catalysts."
+      ],
+      "sources": [
+        "https://www.cboe.com/insights/posts/",
+        "https://www.bis.org/publ/qtrpdf/r_qt2403.pdf"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "H5N1",
+        "event_type": "Dairy_outbreaks",
+        "primary_entities": ["US dairy herds"],
+        "geography": ["US"],
+        "instruments": ["Public health"],
+        "mechanism": "Farm-to-farm spread prolongs outbreaks and economic costs",
+        "canonical_source": "https://www.aphis.usda.gov"
+      },
+      "title": "H5N1 detections in dairy herds under monitoring",
+      "phase": "watch",
+      "score": 54,
+      "confidence": "high",
+      "indicators": {
+        "affected_states": "multiple"
+      },
+      "tripwires": [
+        "Evidence of sustained human-to-human transmission",
+        "Large cross-border trade restrictions or culls"
+      ],
+      "rationale": [
+        "USDA confirms continued surveillance and detections.",
+        "Biosecurity and testing protocols active nationwide."
+      ],
+      "sources": [
+        "https://www.aphis.usda.gov/livestock-poultry-disease/avian/avian-influenza",
+        "https://www.cdc.gov/bird-flu/situation-summary/index.html"
+      ]
+    },
+    {
+      "uid": null,
+      "fingerprint_fields": {
+        "cluster": "H5N1",
+        "event_type": "H2H_watch",
+        "primary_entities": ["WHO"],
+        "geography": ["Global"],
+        "instruments": ["Public health"],
+        "mechanism": "Monitoring for credible human-to-human clusters",
+        "canonical_source": "https://www.who.int/emergencies/disease-outbreak-news"
+      },
+      "title": "Global H5N1 human-to-human watch remains low risk",
+      "phase": "watch",
+      "score": 51,
+      "confidence": "medium",
+      "indicators": {
+        "risk_level": "low"
+      },
+      "tripwires": [
+        "WHO confirms credible H2H cluster with R>1 indicators",
+        "Travel advisories and sustained clusters across regions"
+      ],
+      "rationale": [
+        "WHO/CDC keep risk to general public low.",
+        "Surveillance continues with sporadic reports assessed."
+      ],
+      "sources": [
+        "https://www.who.int/emergencies/disease-outbreak-news",
+        "https://www.cdc.gov/bird-flu/situation-summary/index.html"
+      ]
+    }
+  ],
+  "post": {
+    "slug": "2025-09-22-brief",
+    "title": "Daily Risk Brief -- 2025-09-22",
+    "format": "html",
+    "content": "<h2>Top Movers</h2><ul><li>US CRE: Office-led CMBS pressures keep the cluster elevated.</li><li>AI Power: Grid and equipment constraints support higher scores.</li><li>Euro Sovereigns: Italy and France spreads remain on watch.</li></ul><h2>What Changed</h2><ul><li>CRE indicators continue to flag stress via delinquencies and special servicing.</li><li>Grid operators highlight interconnection delays; agencies reiterate strong data-center demand.</li><li>Shipping routes remain exposed to Red Sea risks; container rates volatile.</li></ul><h2>Watch Next</h2><ul><li>Tripwires: BTP–Bund &gt; 225 bps for 10 sessions; emergency power curtailment policies; 0DTE share &gt; 50% on CPI/FOMC day; evidence of H5N1 H2H clusters.</li><li>CRE: Office delinquency &gt; 12% for 2 months; bank PDNA &gt; 5%.</li></ul>"
+  }
+}
