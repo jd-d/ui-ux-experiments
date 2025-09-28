@@ -1,6 +1,6 @@
 # Trigger Risk Monitor
 
-A static research log that tracks catalysts capable of puncturing the late stage of the 18.6-year land and credit cycle. The site combines a daily AI research brief with a deterministic ingestion script so that every update, score change, and briefing note is auditable.
+A static research log that tracks catalysts capable of puncturing the late stage of the 18.6-year land and credit cycle. The site combines a daily AI research brief with a deterministic ingestion script so that every update, score change, and briefing note is auditable!
 
 ## Repository layout
 
